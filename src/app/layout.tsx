@@ -10,7 +10,7 @@ import SiteHeader from '@/lib/site-header'
 import clsx from 'clsx'
 import { Metadata } from 'next'
 import { Inter as FontSans } from 'next/font/google'
-import { PropsWithChildren } from 'react'
+import React from 'react'
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -33,7 +33,7 @@ function FloatingElements() {
   )
 }
 
-export default function RootLayout({ children }: PropsWithChildren) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -50,7 +50,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
             'my-6 sm:my-9 lg:my-12',
             'gap-6 sm:gap-9 lg:gap-12',
           )}>
-          {children}
+          <div>{children}</div>
         </main>
         <SiteFooter />
         <Analytics />

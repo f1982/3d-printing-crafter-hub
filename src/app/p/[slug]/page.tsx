@@ -3,17 +3,15 @@ import { PageSlugProp } from '@/types/page'
 import Image from 'next/image'
 import { Metadata } from 'next/types'
 
-// export async function generateStaticParams(): Promise<any> {
-//   const data = await getCategoryList()
-//   return data.map((item: Partial<EmojiCategory>) => ({
-//     slug: item.slug,
-//   }))
-// }
-
 export async function generateMetadata({
   params,
 }: PageSlugProp): Promise<Metadata> {
-  return Promise.resolve({} as any)
+  const post = await getPost(params.slug)
+  return {
+    title: post?.title,
+    description: post?.description,
+    keywords: post?.tags.map((tag) => tag.name).join(', '),
+  }
 }
 
 export default async function Page({ params }: PageSlugProp) {
@@ -21,7 +19,9 @@ export default async function Page({ params }: PageSlugProp) {
 
   return (
     <>
-      <h1>Post page: </h1>
+      <h1>
+        Post page: <p>{JSON.stringify(params)}</p>
+      </h1>
       <div>{post?.title}</div>
       {post?.thumbnail && (
         <Image src={post?.thumbnail} width={480} height={240} alt=""></Image>

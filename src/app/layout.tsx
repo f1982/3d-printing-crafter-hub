@@ -2,11 +2,11 @@ import { jsonLdWebsite } from '../config/schema-settings'
 import { Analytics } from '../lib/analytics-settings'
 import SchemaJsonLd from '../utils/schema-ld/schema-jsonld'
 import FloatButton from '@/components/atoms/to-top-button'
-import Footer from '@/components/page/footer/footer'
-import Header from '@/components/page/header/header'
 import { Toaster } from '@/components/ui/toaster'
 import { siteMetadata, siteViewport } from '@/config/setting'
 import '@/globals.css'
+import SiteFooter from '@/lib/site-footer'
+import SiteHeader from '@/lib/site-header'
 import clsx from 'clsx'
 import { Metadata } from 'next'
 import { Inter as FontSans } from 'next/font/google'
@@ -42,7 +42,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
           fontSans.variable,
         )}>
         <SchemaJsonLd jsonLd={jsonLdWebsite}></SchemaJsonLd>
-        <Header />
+        <SiteHeader />
         <main
           className={clsx(
             'flex-1',
@@ -52,7 +52,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
           )}>
           {children}
         </main>
-        <Footer />
+        <SiteFooter />
         <Analytics />
         <FloatingElements />
       </body>

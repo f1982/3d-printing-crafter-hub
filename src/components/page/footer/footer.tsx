@@ -1,38 +1,40 @@
-'use client'
+import { MenuItemData } from '../header/menu-data'
+import { ExtraLinks } from './link-matrix'
+import SocialIconLinks from './social-icon-links'
+import React from 'react'
 
-import { BottomRow } from './bottom-row'
-import { ExtraLinks } from './extra-links'
-import clsx from 'clsx'
-import Image from 'next/image'
+type FooterProps = {
+  logo?: React.ReactNode
+  sns: MenuItemData[]
+  links: MenuItemData[][]
+  slogan?: string
+  copyright?: string
+  className?: string
+}
 
-const Footer = () => {
+export function Slogan({ text }: { text: string }) {
+  return <div className="text-sm text-muted-foreground">{text}</div>
+}
+
+export default function Footer(props: FooterProps) {
   return (
-    <footer className={`w-full bg-popover`}>
-      <div
-        className={clsx(
-          'container mx-auto',
-          'mb-9 flex flex-col justify-between gap-9 p-3 py-6 md:flex-row',
-        )}>
-        <div className="max-w-1/4">
-          <Image
-            src="/logo.png"
-            width={172}
-            height={42}
-            title="Website for Finding and Copying Emojis"
-            alt="Emoji you, Find and Copy Emojis Easily"
-            placeholder="blur"
-            blurDataURL="/logo.png"
-            className="mb-6"
-          />
-          <p className="font-semibold">
-            Search for emojis with just one click! Explore a variety of emojis
-          </p>
+    <footer className="bg-card py-16 md:py-32">
+      <div className="container">
+        <div className="flex flex-col justify-between gap-9 md:flex-row">
+          <div className="flex flex-col items-center gap-6 md:items-start">
+            {props.logo}
+            <SocialIconLinks data={props.sns}></SocialIconLinks>
+            {props.slogan && <Slogan text="Made with ❤️ by Emoji You" />}
+          </div>
+          <div className="mb-8 w-full md:w-1/3">
+            <ExtraLinks data={props.links} />
+          </div>
         </div>
-        <ExtraLinks />
+        <div>
+          <div className="my-9 border-b border-solid border-b-border"></div>
+          <p className="text-xs text-muted-foreground">{props.copyright}</p>
+        </div>
       </div>
-      <BottomRow />
     </footer>
   )
 }
-
-export default Footer

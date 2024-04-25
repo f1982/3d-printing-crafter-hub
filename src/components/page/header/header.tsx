@@ -1,63 +1,41 @@
 'use client'
 
-import DarkModeToggle from './dark-mode-toggle'
-import { NavItems } from './nav-menu'
-import MobileNav from './nav-mobile'
-import LogoImage from '@/assets/images/logo-text.png'
-import { navMenuData } from '@/config/menu-setting'
-import { RowsIcon } from '@radix-ui/react-icons'
+import { MenuItemData } from './menu-data'
+import { NavItems, NavMenuItem } from './menu-item'
+import { MobileNavPopover } from './mobile-menu-sheet'
 import clsx from 'clsx'
-import Image from 'next/image'
-import Link from 'next/link'
-import { useState } from 'react'
+import React from 'react'
 
-const Header = () => {
-  const [isOpen, setIsOpen] = useState(false)
+type HeaderProps = {
+  left?: React.ReactNode
+  right?: React.ReactNode
+  data: MenuItemData[]
+  className?: string
+}
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen)
-  }
-
+const Header = ({ left, right, data, className }: HeaderProps) => {
   return (
-    <header className="border-b border-border bg-popover">
-      <div className={`container mx-auto h-16 md:h-24 flex items-center`}>
-        <div className="w-full flex items-center justify-between">
-          <Link
-            data-test="logoLink"
-            href="/"
-            title="back to emojiu.cc homepage">
-            <Image
-              src={LogoImage}
-              width={152}
-              title="Website for Finding and Copying Emojis"
-              alt="Emoji you, Find and Copy Emojis Easily"
-              placeholder="blur"
-            />
-          </Link>
+    <header className={clsx('border-b-0 border-b-border', className)}>
+      <div className="container mt-6">
+        <div className="flex w-full items-center justify-between">
+          {left}
 
-          {/* Menu, only show on bigger screen */}
-          <ul
+          <menu
             data-test="desktopNavMenu"
-            className="items-center space-x-9 hidden lg:flex [&>li]:font-normal">
-            <NavItems itemData={navMenuData} />
-          </ul>
+            className="hidden flex-row gap-9 lg:flex">
+            {data.map((item) => (
+              <NavMenuItem
+                key={item.link}
+                label={item.title}
+                link={item.link}
+                icon={item.icon}></NavMenuItem>
+            ))}
+          </menu>
+          <div className="hidden lg:flex">{right}</div>
 
-          <DarkModeToggle />
-          <button
-            className="lg:hidden p-3"
-            title="Toggle menu"
-            onClick={toggleMenu}>
-            <RowsIcon className="w-6 h-6" />
-          </button>
+          {/* Menu button only show in small screen */}
+          <MobileNavPopover left={left} right={right} data={data} />
         </div>
-
-        <MobileNav
-          className={clsx(isOpen ? 'visible opacity-100' : 'hidden opacity-0')}
-          handleClose={() => {
-            setIsOpen(false)
-          }}
-        />
-        {/* )} */}
       </div>
     </header>
   )

@@ -10,6 +10,7 @@ export async function getPosts() {
       thumbnail: true,
       tags: true,
       category: true,
+      updatedAt: true,
     },
   })
 

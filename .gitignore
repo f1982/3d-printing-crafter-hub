@@ -1,0 +1,33 @@
+node_modules
+.next/
+.next/**
+out/
+out/**
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env
+
+.contentlayer
+.contentlayer/**
+
+# sitemap
+public/sitemap.xml
+public/sitemap-0.xml
+
+# yarn
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+#netlify
+.netlify
+
+#pwa
+**/public/sw**
+**/public/swe**

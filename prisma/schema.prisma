@@ -1,0 +1,61 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./data.db"
+}
+
+// model Metadata {
+//   id          Int     @id @default(autoincrement())
+//   title       String?
+//   description String?
+//   keywords    String?
+//   // You can add more fields as needed
+
+//   createdAt   DateTime @default(now())
+//   updatedAt   DateTime @default(now()) @updatedAt
+// }
+
+model Category {
+  id          Int     @id @default(autoincrement())
+  name        String
+  slug        String  @unique
+  title       String
+  description String?
+
+  posts Post[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+}
+
+model Post {
+  id       Int    @id @default(autoincrement())
+  category String
+  slug     String @unique
+
+  title       String
+  description String?
+  keywords    String
+
+  thumbnail String?
+  content   String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+
+  Category   Category? @relation(fields: [categoryId], references: [id])
+  categoryId Int?
+
+  tags Tag[]
+}
+
+model Tag {
+  id   Int    @id @default(autoincrement())
+  slug String @unique
+  name String
+
+  posts Post[]
+}

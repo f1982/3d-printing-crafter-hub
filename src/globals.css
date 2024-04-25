@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  --background: 36 14% 100%;
+  --foreground: 36 5% 10%;
+  --card: 36 14% 100%;
+  --card-foreground: 36 5% 15%;
+  --popover: 36 14% 100%;
+  --popover-foreground: 36 95% 10%;
+  --primary: 36 100% 57%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 36 14% 90%;
+  --secondary-foreground: 0 0% 0%;
+  --muted: -2 14% 95%;
+  --muted-foreground: 36 5% 40%;
+  --accent: -2 14% 90%;
+  --accent-foreground: 36 5% 15%;
+  --destructive: 0 50% 50%;
+  --destructive-foreground: 36 5% 100%;
+  --border: 36 20% 82%;
+  --input: 36 20% 50%;
+  --ring: 36 100% 57%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 36 14% 10%;
+  --foreground: 36 5% 100%;
+  --card: 36 14% 10%;
+  --card-foreground: 36 5% 100%;
+  --popover: 36 14% 5%;
+  --popover-foreground: 36 5% 100%;
+  --primary: 36 100% 57%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 36 14% 20%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: -2 14% 25%;
+  --muted-foreground: 36 5% 65%;
+  --accent: -2 14% 25%;
+  --accent-foreground: 36 5% 95%;
+  --destructive: 0 50% 50%;
+  --destructive-foreground: 36 5% 100%;
+  --border: 36 20% 50%;
+  --input: 36 20% 50%;
+  --ring: 36 100% 57%;
+  --radius: 0.5rem;
+}
+
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .emoji-container {
+    @apply relative flex aspect-square w-full;
+    @apply items-center justify-center;
+    @apply rounded-xl ring-1 ring-border bg-card hover:bg-accent;
+  }
+
+  .emoji-item-button {
+    /*  3xl is the maximal  */
+    @apply cursor-pointer p-6 text-3xl;
+  }
+
+  .emoji-copy-hint {
+    @apply absolute z-10 select-none rounded-md bg-green-300 px-2 font-bold;
+  }
+
+  .emoji-link {
+    @apply invisible absolute z-40 m-1 rounded-xl bg-white px-2 py-1 text-sm dark:text-black md:group-hover:visible;
+    right: 0;
+    top: 0;
+  }
+}

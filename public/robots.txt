@@ -1,0 +1,6 @@
+# *
+User-agent: *
+Allow: /
+
+Sitemap: https://emojiu.cc/sitemap.xml
+Sitemap: https://emojiu.cc/sitemap-0.xml

@@ -13,7 +13,7 @@ function SocialIconLinks({
           href={item.link}
           title={item.title}
           className="text-muted-foreground transition-all hover:text-foreground">
-          {item.icon}
+          <span className="fill-primary stroke-primary">{item.icon}</span>
         </Link>
       ))}
     </div>

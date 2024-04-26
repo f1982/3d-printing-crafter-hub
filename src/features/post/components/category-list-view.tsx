@@ -1,5 +1,5 @@
 import { getCategories } from '../post-data'
-import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 
 export default function CategoryListView({
@@ -14,11 +14,9 @@ export default function CategoryListView({
           return (
             <div key={c.name}>
               <Link href={c.url}>
-                <Badge
-                  className="p-3 rounded-none bg-accent"
-                  variant={'outline'}>
-                  {c.name}
-                </Badge>
+                <Button variant="default" className="p-3 rounded-none ">
+                  {c.name.toUpperCase()}
+                </Button>
               </Link>
             </div>
           )

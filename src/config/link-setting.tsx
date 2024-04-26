@@ -33,25 +33,25 @@ export const socialLinks: MenuItemData[] = [
   {
     title: 'Twitter',
     label: 'Twitter',
-    icon: <Twitter />,
+    icon: <Twitter className="stroke-primary" />,
     link: 'https://twitter.com/emojiyou',
   },
   {
     title: 'YouTube',
     label: 'YouTube',
-    icon: <Youtube />,
+    icon: <Youtube className="stroke-primary" />,
     link: 'https://www.youtube.com/channel/UC8_l368_87i370525030',
   },
   {
     title: 'Ins',
     label: 'Ins',
-    icon: <Instagram />,
+    icon: <Instagram className="stroke-primary" />,
     link: 'https://www.youtube.com/channel/UC8_l368_87i370525030',
   },
   {
     title: 'Facebook',
     label: 'Facebook',
-    icon: <Facebook />,
+    icon: <Facebook className="stroke-primary" />,
     link: 'https://www.youtube.com/channel/UC8_l368_87i370525030',
   },
 ]

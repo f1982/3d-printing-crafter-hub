@@ -10,7 +10,7 @@ const PostItemView: React.FC<{
   coverImage: string
   date: string
   url: string
-  tags: string
+  tags: string[]
 }> = ({ title, coverImage, date, url, tags }) => (
   <div className="w-full flex flex-col gap-3">
     <div className="cursor-pointer relative aspect-video w-full rounded-lg overflow-hidden">
@@ -26,8 +26,8 @@ const PostItemView: React.FC<{
           alt={`${title} preview`}
         />
 
-        <div className="mb-3 absolute top-0 left-0 w-full h-full bg-black/30"></div>
-        <h1 className="text-lg absolute top-0 left-0 p-6 font-bold text-white drop-shadow-sm">
+        <div className="mb-3 absolute top-0 left-0 w-full h-full bg-primary/20"></div>
+        <h1 className="text-lg absolute top-0 left-0 p-6 font-bold text-white drop-shadow-xl">
           {title}
         </h1>
         {/* If content is a url, show a link icon */}
@@ -36,9 +36,16 @@ const PostItemView: React.FC<{
             <Link2 />
           </span>
         )}
-        <Badge className="absolute right-6 bottom-6 bg-accent text-accent-foreground rounded-xl">
-          {tags}
-        </Badge>
+        <div className="absolute right-6 bottom-6 text-muted">
+          {/* {<p>tags:{JSON.stringify(tags)}</p>} */}
+          {tags?.map((tag) => (
+            <Badge
+              key={tag}
+              className="mr-2 text-xs bg-accent text-muted-foreground rounded-xl">
+              {tag}
+            </Badge>
+          ))}
+        </div>
       </Link>
     </div>
     {/*  */}

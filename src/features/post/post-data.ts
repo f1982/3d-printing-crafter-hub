@@ -54,6 +54,9 @@ export async function getCategory(slug: string) {
         orderBy: {
           updatedAt: 'desc',
         },
+        include: {
+          tags: true,
+        },
       },
       tags: true,
     },

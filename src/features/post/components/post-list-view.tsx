@@ -13,7 +13,7 @@ export default function PostListView({ posts }: { posts: Post[] }) {
               coverImage={p.thumbnail}
               date={p.updatedAt.toUTCString()}
               url={p.url}
-              tags={'Tag'}
+              tags={p.tags}
             />
             {/* {p.title}
       <Image src={p?.thumbnail} width={480} height={240} alt=""></Image> */}

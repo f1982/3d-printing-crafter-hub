@@ -1,5 +1,4 @@
 import { getCategory, getPosts, getTag } from '../post-data'
-import { CategoryList } from './category-list-view'
 import PostListView from './post-list-view'
 import Tags from './post-tags'
 
@@ -36,19 +35,14 @@ async function PageContent({
   }
 
   return (
-    <div className="mx-6 mb-36 flex flex-col gap-9 md:flex-row">
-      <div className="hidden lg:flex  flex-col gap-9 max-w-[10rem] ">
-        <CategoryList />
-      </div>
-      <div className="flex-1">
-        {!!tags?.length && (
-          <div className="w-full mb-9 hidden lg:block">
-            <Tags data={tags} />
-          </div>
-        )}
-        <PostListView posts={posts} />
-      </div>
-    </div>
+    <>
+      {!!tags?.length && (
+        <div className="w-full mb-9 hidden lg:block">
+          <Tags data={tags} />
+        </div>
+      )}
+      <PostListView posts={posts} />
+    </>
   )
 }
 

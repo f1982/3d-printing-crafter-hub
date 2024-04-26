@@ -2,6 +2,7 @@
 
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { Menu } from 'lucide-react'
+import React from 'react'
 
 export const MobileBottomMenu = ({
   left,

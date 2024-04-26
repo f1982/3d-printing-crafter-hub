@@ -1,6 +1,7 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
+import React from 'react'
 
 export function PostModal({ children }: { children: React.ReactNode }) {
   const router = useRouter()

@@ -1,8 +1,7 @@
 import PostItemView from './blog-post-item'
 import CardGrid from '@/components/atoms/card-grid'
-import { Post } from '@prisma/client'
 
-export default function PostListView({ posts }: { posts: Post[] }) {
+export default function PostListView({ posts }: { posts: any[] }) {
   return (
     <CardGrid>
       {posts.map((p) => {
@@ -10,10 +9,10 @@ export default function PostListView({ posts }: { posts: Post[] }) {
           <div key={p.title}>
             <PostItemView
               title={p.title}
-              coverImage={p.thumbnail}
+              coverImage={p.thumbnail!}
               date={p.updatedAt.toUTCString()}
-              url={p.url}
-              tags={p.tags}
+              url={p.url!}
+              tags={p.tags ?? ['']}
             />
             {/* {p.title}
       <Image src={p?.thumbnail} width={480} height={240} alt=""></Image> */}

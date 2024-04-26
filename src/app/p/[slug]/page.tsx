@@ -33,7 +33,7 @@ export default async function Page({ params }: PageSlugProp) {
               route: '/',
             },
             {
-              label: post.Category?.title,
+              label: post.Category!.title,
               route: '/c/' + post?.Category?.slug,
             },
             {

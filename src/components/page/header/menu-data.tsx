@@ -1,6 +1,8 @@
+import React from 'react'
+
 export type MenuItemData = {
   label: string
   title: string
-  icon?: JSX.Element
+  icon?: React.ReactNode
   link: string
 }

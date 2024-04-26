@@ -2,17 +2,16 @@ import { getCategory, getPosts, getTag } from '../post-data'
 import { CategoryList } from './category-list-view'
 import PostListView from './post-list-view'
 import Tags from './post-tags'
-import { Post, Tag } from '@prisma/client'
 
-export default async function PageContent({
+async function PageContent({
   category,
   tag,
 }: {
   category?: string
   tag?: string
 }) {
-  let posts: Post[] | undefined = undefined
-  let tags: Tag[] | undefined = undefined
+  let posts: any[] | undefined = undefined
+  let tags: { name: string; url: string }[] | undefined = undefined
 
   if (category) {
     const data = await getCategory(category)
@@ -26,11 +25,15 @@ export default async function PageContent({
     posts = await getPosts()
   }
 
-  posts = posts.map((p) => ({
+  posts = posts?.map((p) => ({
     ...p,
     url: p.url ? p.url : `/p/${p.slug}`,
-    tags: p.tags?.map((t) => t.name),
+    tags: p.tags?.map((t: any) => t.name),
   }))
+
+  if (!posts) {
+    return null
+  }
 
   return (
     <div className="mx-6 mb-36 flex flex-col gap-9 md:flex-row">
@@ -48,3 +51,5 @@ export default async function PageContent({
     </div>
   )
 }
+
+export default PageContent

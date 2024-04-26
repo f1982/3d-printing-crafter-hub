@@ -14,12 +14,14 @@ const PostItemView: React.FC<{
   tags: string[]
 }> = ({ title, coverImage, date, url, tags }) => (
   <div className="w-full flex flex-col gap-3">
-    <div className="cursor-pointer relative aspect-video w-full rounded-lg overflow-hidden">
+    <div className="cursor-pointer relative aspect-video w-full rounded-xl overflow-hidden">
       <Link href={url} passHref>
         <Image
           className={clsx(
-            'w-full h-full rounded-xl object-cover',
+            'w-full h-full object-cover',
+            'bg-primary',
             'ring-1 ring-muted',
+            'scale-100 transition-all duration-300 ease-in-out hover:scale-110',
           )}
           src={coverImage}
           width={600}
@@ -27,9 +29,17 @@ const PostItemView: React.FC<{
           alt={`${title} preview`}
         />
 
-        <div className="mb-3 absolute top-0 left-0 w-full h-full bg-primary/20"></div>
+        <div
+          className={clsx(
+            'mb-3 absolute top-0 left-0 w-full h-full ',
+            // 'transition-all duration-1200 ease-in',
+            'bg-primary/30',
+            'pointer-events-none',
+          )}></div>
         <h1
-          className="text-lg absolute top-0 left-0 p-5 leading-5 font-bold text-white"
+          className={clsx(
+            'text-lg absolute top-0 left-0 p-5 leading-5 font-bold text-white pointer-events-none',
+          )}
           style={{
             textShadow: '0px 1px 0px rgba(0, 0, 0, 0.6)',
           }}>
@@ -37,11 +47,11 @@ const PostItemView: React.FC<{
         </h1>
         {/* If content is a url, show a link icon */}
         {url.startsWith('http') && (
-          <span className="absolute left-3 bottom-2 text-muted">
+          <span className="absolute left-3 bottom-2 text-muted pointer-events-none">
             <Link2 />
           </span>
         )}
-        <div className="absolute right-3 bottom-3 text-muted">
+        <div className="absolute right-3 bottom-3 text-muted pointer-events-none">
           {/* {<p>tags:{JSON.stringify(tags)}</p>} */}
           {sampleSize(tags, 2)?.map((tag) => (
             <Badge

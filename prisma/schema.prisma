@@ -26,6 +26,7 @@ model Category {
   description String?
 
   posts Post[]
+  tags  Tag[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
@@ -58,4 +59,7 @@ model Tag {
   name String
 
   posts Post[]
+
+  Category   Category? @relation(fields: [categoryId], references: [id])
+  categoryId Int?
 }

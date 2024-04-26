@@ -1,18 +1,23 @@
-import CardGrid from '@/components/atoms/card-grid'
 import RainbowText from '@/components/atoms/rainbow-text'
 import Hero from '@/components/page/hero/hero'
 import { siteMetadata } from '@/config/setting'
-import PostItemView from '@/features/post/blog-post-item'
+import CategoryListView from '@/features/post/category-list-view'
 import { getCategories, getPosts, getTags } from '@/features/post/post-data'
+import PostListView from '@/features/post/post-list-view'
 import Tags from '@/features/post/tags'
-import Link from 'next/link'
 
 export const metadata = { ...siteMetadata }
 
 export default async function Page() {
   const posts = await getPosts()
-  const categories = await getCategories()
-  const tags = await getTags()
+  const categories = (await getCategories()).map((c) => ({
+    name: c.name,
+    url: `/category/${c.slug}`,
+  }))
+  const tags = (await getTags()).map((t) => ({
+    name: t.name,
+    url: `/t/${t.slug}`,
+  }))
 
   return (
     <>
@@ -28,40 +33,13 @@ export default async function Page() {
 
       <div className="mx-6 mb-36 flex flex-col gap-9 md:flex-row">
         <div className="hidden lg:block">
-          {categories.map((c) => {
-            return (
-              <div key={c.id}>
-                <Link href={`/category/${c.slug}`}>{c.name}</Link>
-              </div>
-            )
-          })}
+          <CategoryListView data={categories} />
         </div>
         <div className="flex-1">
           <div className="w-full mb-9 hidden lg:block">
-            <Tags data={tags.map((t) => t.name)} />
+            <Tags data={tags} />
           </div>
-          <CardGrid>
-            {posts.map((p) => {
-              return (
-                <div key={p.title}>
-                  <PostItemView
-                    title={p.title}
-                    coverImage={p.thumbnail}
-                    date={p.updatedAt.toUTCString()}
-                    url={`/p/${p.slug}`}
-                  />
-                  {/* {p.title}
-              <Image src={p?.thumbnail} width={480} height={240} alt=""></Image> */}
-                  {/* <div>
-              Tags:{' '}
-              {p.tags.map((t) => {
-                return <div key={t.id}>{t.name} </div>
-              })}
-            </div> */}
-                </div>
-              )
-            })}
-          </CardGrid>
+          <PostListView posts={posts} />
         </div>
       </div>
     </>

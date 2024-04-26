@@ -50,6 +50,7 @@ export async function getCategory(slug: string) {
       slug: true,
       description: true,
       posts: true,
+      tags: true,
     },
   })
 

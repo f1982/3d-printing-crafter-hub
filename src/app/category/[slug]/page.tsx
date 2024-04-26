@@ -1,3 +1,4 @@
+import PageContent from '@/features/post/page-content'
 import { getCategory } from '@/features/post/post-data'
 import { PageSlugProp } from '@/types/page'
 import { Metadata } from 'next/types'
@@ -20,16 +21,23 @@ export default async function CategoryPage({ params }: PageSlugProp) {
 
   return (
     <>
-      <h1>Category page: </h1>
-      <div>{category?.title}</div>
-      {category?.posts.map((p) => {
-        return (
-          <div key={p.title}>
-            {p.title}
-            {/* {JSON.stringify(p.tags)} */}
-          </div>
-        )
-      })}
+      <PageContent category={params.slug} />
+      {/* <div className="container">
+        <h1>
+          Category page: <p>{JSON.stringify(category)}</p>
+        </h1>
+        <div>{category?.title}</div>
+        <CategoryList />
+
+        <Tags
+          data={category?.tags.map((tag) => ({
+            name: tag.name,
+            url: '/t/' + tag.slug,
+          }))}
+        />
+
+        <PostListView posts={category?.posts} />
+      </div> */}
     </>
   )
 }

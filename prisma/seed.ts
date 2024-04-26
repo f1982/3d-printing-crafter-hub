@@ -16,31 +16,6 @@ async function cleanupData() {
 }
 
 async function seedData() {
-  // Create sample categories
-  const categories = [
-    'technology',
-    'lifestyle',
-    'travel',
-    'food',
-    'sports',
-    'fashion',
-    'health',
-    'business',
-    'entertainment',
-    'education',
-  ]
-
-  for (const category of categories) {
-    await prisma.category.create({
-      data: {
-        name: category,
-        slug: category,
-        title: category.charAt(0).toUpperCase() + category.slice(1),
-        description: faker.lorem.sentence(),
-      },
-    })
-  }
-
   // Create sample tags
   const tags = [
     'dev',
@@ -84,12 +59,7 @@ async function seedData() {
     })
   }
 
-  // Create sample posts
-  for (let i = 0; i < 35; i++) {
-    const category = categories[Math.floor(Math.random() * categories.length)]
-    const categoryData = await prisma.category.findUnique({
-      where: { slug: category },
-    })
+  const getRandomTags = async () => {
     const tagCount = Math.floor(Math.random() * 5) + 1
     const tagIds: number[] = []
 
@@ -100,6 +70,43 @@ async function seedData() {
         tagIds.push(tagData.id)
       }
     }
+    return tagIds
+  }
+
+  // Create sample categories
+  const categories = [
+    'technology',
+    'lifestyle',
+    'travel',
+    'food',
+    'sports',
+    'fashion',
+    'health',
+    'business',
+    'entertainment',
+    'education',
+  ]
+
+  for (const category of categories) {
+    await prisma.category.create({
+      data: {
+        name: category,
+        slug: category,
+        title: category.charAt(0).toUpperCase() + category.slice(1),
+        tags: {
+          connect: (await getRandomTags()).map((id) => ({ id })),
+        },
+        description: faker.lorem.sentence(),
+      },
+    })
+  }
+
+  // Create sample posts
+  for (let i = 0; i < 35; i++) {
+    const category = categories[Math.floor(Math.random() * categories.length)]
+    const categoryData = await prisma.category.findUnique({
+      where: { slug: category },
+    })
 
     const mockTitle = faker.lorem.sentence()
     await prisma.post.create({
@@ -113,7 +120,7 @@ async function seedData() {
         thumbnail: faker.image.urlPicsumPhotos(),
         categoryId: categoryData?.id,
         tags: {
-          connect: tagIds.map((id) => ({ id })),
+          connect: (await getRandomTags()).map((id) => ({ id })),
         },
       },
     })

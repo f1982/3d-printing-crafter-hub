@@ -1,4 +1,4 @@
-import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 
 export default function Tags({
@@ -11,12 +11,12 @@ export default function Tags({
       <div className="flex flex-wrap gap-2">
         {data.map((t) => {
           return (
-            <Link href={t.url}>
-              <Badge
-                className="bg-muted text-muted-foreground text-sm font-thin shadow-none hover:bg-secondary"
-                key={t.name}>
-                {t.name}
-              </Badge>
+            <Link key={t.name} href={t.url}>
+              <Button
+                variant="secondary"
+                className="rounded-xl text-sm font-normal p-3 h-6">
+                <span>{t.name}</span>
+              </Button>
             </Link>
           )
         })}

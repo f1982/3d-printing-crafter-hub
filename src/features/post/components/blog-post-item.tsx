@@ -1,5 +1,6 @@
 import { Badge } from '@/components/ui/badge'
 import clsx from 'clsx'
+import { sampleSize } from 'lodash'
 import { Link2 } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -27,18 +28,22 @@ const PostItemView: React.FC<{
         />
 
         <div className="mb-3 absolute top-0 left-0 w-full h-full bg-primary/20"></div>
-        <h1 className="text-lg absolute top-0 left-0 p-6 font-bold text-white drop-shadow-xl">
+        <h1
+          className="text-lg absolute top-0 left-0 p-5 leading-5 font-bold text-white"
+          style={{
+            textShadow: '0px 1px 0px rgba(0, 0, 0, 0.6)',
+          }}>
           {title}
         </h1>
         {/* If content is a url, show a link icon */}
         {url.startsWith('http') && (
-          <span className="absolute left-6 bottom-6 text-muted">
+          <span className="absolute left-3 bottom-2 text-muted">
             <Link2 />
           </span>
         )}
-        <div className="absolute right-6 bottom-6 text-muted">
+        <div className="absolute right-3 bottom-3 text-muted">
           {/* {<p>tags:{JSON.stringify(tags)}</p>} */}
-          {tags?.map((tag) => (
+          {sampleSize(tags, 2)?.map((tag) => (
             <Badge
               key={tag}
               className="mr-2 text-xs bg-accent text-muted-foreground rounded-xl">

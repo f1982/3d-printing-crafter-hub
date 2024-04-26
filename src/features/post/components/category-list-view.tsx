@@ -14,7 +14,7 @@ export default function CategoryListView({
           return (
             <div key={c.name}>
               <Link href={c.url}>
-                <Button variant="default" className="p-3 rounded-none ">
+                <Button variant="default" className="p-3 rounded-none">
                   {c.name.toUpperCase()}
                 </Button>
               </Link>
@@ -34,9 +34,5 @@ export async function CategoryList() {
 
   categories.unshift({ name: 'All', url: '/' })
 
-  return (
-    <div className="flex flex-col gap-9 max-w-[10rem]">
-      <CategoryListView data={categories} />
-    </div>
-  )
+  return <CategoryListView data={categories} />
 }

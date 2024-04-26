@@ -34,7 +34,7 @@ export default async function PageContent({
 
   return (
     <div className="mx-6 mb-36 flex flex-col gap-9 md:flex-row">
-      <div className="hidden lg:block ">
+      <div className="hidden lg:flex  flex-col gap-9 max-w-[10rem] ">
         <CategoryList />
       </div>
       <div className="flex-1">

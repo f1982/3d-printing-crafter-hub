@@ -2,6 +2,7 @@
 import SocialIconLinks from '@/components/page/footer/social-icon-links'
 import Header from '@/components/page/header/header'
 import { socialLinks } from '@/config/link-setting'
+import { CategoryList } from '@/features/post/components/category-list-view'
 import SiteLogo from '@/lib/site-logo'
 import Link from 'next/link'
 
@@ -17,7 +18,7 @@ export default function SiteHeader() {
             <SiteLogo />
           </Link>
         }
-        data={[]}
+        content={<CategoryList />}
         right={
           <div className="flex flex-row gap-3">
             {/* <SwitchCamera /> */}

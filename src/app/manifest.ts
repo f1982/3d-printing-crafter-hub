@@ -1,4 +1,4 @@
-import { siteSettings } from '@/config/setting'
+import { colorSetting, siteSettings } from '@/config/setting'
 import { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
@@ -9,8 +9,8 @@ export default function manifest(): MetadataRoute.Manifest {
     start_url: '/',
     orientation: 'portrait',
     display: 'standalone',
-    background_color: '#f3f1f4',
-    theme_color: '#f3f1f4',
+    background_color: colorSetting.lightBg,
+    theme_color: colorSetting.theme,
     icons: [
       {
         src: '/android-chrome-192x192.png',

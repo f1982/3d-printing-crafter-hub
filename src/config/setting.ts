@@ -73,12 +73,21 @@ export const twitter: Twitter = {
   images: ['/og-image.png'],
 }
 
+export const colorSetting = {
+  lightBg: '#f3f1f4',
+  darkBg: '#1b161d',
+  theme: '#cb9fdd',
+}
+
 export const siteViewport: Viewport = {
   // https://dequeuniversity.com/rules/axe/4.7/meta-viewport
   width: 'device-width',
   initialScale: 1,
   maximumScale: 3,
-  themeColor: '#ffcc00',
+  themeColor: [
+    { media: '(prefers-color-scheme: dark)', color: colorSetting.darkBg },
+    { media: '(prefers-color-scheme: light)', color: colorSetting.lightBg },
+  ],
 }
 
 export const siteMetadata: Metadata = {

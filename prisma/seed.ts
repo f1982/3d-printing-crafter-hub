@@ -119,6 +119,7 @@ async function seedData() {
         content: faker.lorem.paragraphs(),
         thumbnail: faker.image.urlPicsumPhotos(),
         categoryId: categoryData?.id,
+        url: Math.random() > 0.5 ? faker.internet.url() : '',
         tags: {
           connect: (await getRandomTags()).map((id) => ({ id })),
         },

@@ -1,4 +1,4 @@
-import PageContent from '@/features/post/page-content'
+import PageContent from '@/features/post/components/page-content'
 import { getCategory } from '@/features/post/post-data'
 import { PageSlugProp } from '@/types/page'
 import { Metadata } from 'next/types'

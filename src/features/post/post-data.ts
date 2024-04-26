@@ -9,6 +9,7 @@ export async function getPosts() {
       description: true,
       thumbnail: true,
       tags: true,
+      url: true,
       category: true,
       updatedAt: true,
     },
@@ -49,7 +50,11 @@ export async function getCategory(slug: string) {
       title: true,
       slug: true,
       description: true,
-      posts: true,
+      posts: {
+        orderBy: {
+          updatedAt: 'desc',
+        },
+      },
       tags: true,
     },
   })
@@ -74,14 +79,18 @@ export async function getTag(slug: string) {
 export async function getPost(slug: string) {
   const data = await prisma.post.findUnique({
     where: { slug },
-    select: {
-      id: true,
-      title: true,
-      slug: true,
-      description: true,
-      thumbnail: true,
+    // select: {
+    //   id: true,
+    //   title: true,
+    //   slug: true,
+    //   description: true,
+    //   thumbnail: true,
+    //   tags: true,
+    //   category: true,
+    // },
+    include: {
+      Category: true,
       tags: true,
-      category: true,
     },
   })
 

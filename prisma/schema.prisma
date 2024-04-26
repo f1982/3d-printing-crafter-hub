@@ -43,6 +43,7 @@ model Post {
 
   thumbnail String?
   content   String?
+  url       String?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt

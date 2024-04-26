@@ -1,8 +1,8 @@
 // import DarkModeToggle from '@/components/molecule/dark-mode-toggle'
+import SocialIconLinks from '@/components/page/footer/social-icon-links'
 import Header from '@/components/page/header/header'
-import { navMenuData } from '@/config/link-setting'
+import { socialLinks } from '@/config/link-setting'
 import SiteLogo from '@/lib/site-logo'
-import { SwitchCamera } from 'lucide-react'
 import Link from 'next/link'
 
 export default function SiteHeader() {
@@ -17,10 +17,11 @@ export default function SiteHeader() {
             <SiteLogo />
           </Link>
         }
-        data={navMenuData}
+        data={[]}
         right={
           <div className="flex flex-row gap-3">
-            <SwitchCamera />
+            {/* <SwitchCamera /> */}
+            <SocialIconLinks data={socialLinks}></SocialIconLinks>
             {/* <LocaleSwitcher /> */}
           </div>
         }

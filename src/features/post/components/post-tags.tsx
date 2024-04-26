@@ -12,7 +12,11 @@ export default function Tags({
         {data.map((t) => {
           return (
             <Link href={t.url}>
-              <Badge key={t.name}>{t.name}</Badge>
+              <Badge
+                className="bg-muted text-muted-foreground text-sm font-thin shadow-none hover:bg-secondary"
+                key={t.name}>
+                {t.name}
+              </Badge>
             </Link>
           )
         })}

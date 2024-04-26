@@ -1,14 +1,14 @@
 import PageContent from '@/features/post/components/page-content'
-import { getCategory } from '@/features/post/post-data'
+import { getCategories, getCategory } from '@/features/post/post-data'
 import { PageSlugProp } from '@/types/page'
 import { Metadata } from 'next/types'
 
-// export async function generateStaticParams(): Promise<any> {
-//   const data = await getCategoryList()
-//   return data.map((item: Partial<EmojiCategory>) => ({
-//     slug: item.slug,
-//   }))
-// }
+export async function generateStaticParams(): Promise<any> {
+  const data = await getCategories()
+  return data.map((c) => ({
+    slug: c.slug,
+  }))
+}
 
 export async function generateMetadata({
   params,

@@ -1,10 +1,17 @@
 import { BreadcrumbNav } from '@/components/atoms/breadcrumb-nav'
 import Prose from '@/components/atoms/prose'
 import PageRows from '@/components/layout/page-rows'
-import { getPost } from '@/features/post/post-data'
+import { getPost, getPosts } from '@/features/post/post-data'
 import { PageSlugProp } from '@/types/page'
 import Image from 'next/image'
 import { Metadata } from 'next/types'
+
+export async function generateStaticParams(): Promise<any> {
+  const data = await getPosts()
+  return data.map((p) => ({
+    slug: p.slug,
+  }))
+}
 
 export async function generateMetadata({
   params,

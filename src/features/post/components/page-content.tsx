@@ -36,12 +36,14 @@ async function PageContent({
 
   return (
     <>
-      {!!tags?.length && (
-        <div className="w-full mb-9 hidden lg:block">
-          <Tags data={tags} />
-        </div>
-      )}
-      <PostListView posts={posts} />
+      <div>
+        {!!tags?.length && (
+          <div className="w-full mb-6 hidden lg:block">
+            <Tags data={tags} />
+          </div>
+        )}
+        <PostListView posts={posts} />
+      </div>
     </>
   )
 }

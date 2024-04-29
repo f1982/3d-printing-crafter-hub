@@ -6,11 +6,13 @@ import {
 
 export function BreadcrumbNav({
   breadcrumbs,
+  showCurrent,
 }: {
   breadcrumbs: Array<{
     label: string
     route: string
   }>
+  showCurrent: boolean
 }) {
   return (
     <Breadcrumb>
@@ -23,11 +25,13 @@ export function BreadcrumbNav({
             </BreadcrumbLink>
           </BreadcrumbItem>
         ))}
-      <BreadcrumbItem>
-        <BreadcrumbLink isCurrentPage>
-          {breadcrumbs[breadcrumbs.length - 1].label}
-        </BreadcrumbLink>
-      </BreadcrumbItem>
+      {showCurrent && (
+        <BreadcrumbItem>
+          <BreadcrumbLink>
+            {breadcrumbs[breadcrumbs.length - 1].label}
+          </BreadcrumbLink>
+        </BreadcrumbItem>
+      )}
     </Breadcrumb>
   )
 }

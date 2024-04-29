@@ -1,4 +1,4 @@
-import { Article } from '../../components/atoms/typography'
+import { Article } from '../../../components/atoms/typography'
 import { Post, allPosts } from '@/app/../../.contentlayer/generated'
 import { siteMetadata } from '@/config/setting'
 import { Metadata } from 'next'

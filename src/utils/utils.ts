@@ -53,30 +53,6 @@ export function copyToClipboard(string: string): boolean {
   return !!result
 }
 
-export const getFileNameBackUp = (cn: string) => {
-  let cate = cn.toLowerCase().replace(/&/g, 'and').replace(/\s/g, '-')
-  return cate
-}
-
-export const getFileName = (name: string) =>
-  name
-    .toLowerCase()
-    .replace(/&/g, 'and')
-    .replace(/,/g, '')
-    .replace(/’/g, '')
-    .replace(/:/g, '')
-    .replace(/å/g, 'a')
-    .replace(/ã/g, 'a')
-    .replace(/é/g, 'e')
-    .replace(/í/g, 'i')
-    .replace(/ñ/g, 'n')
-    .replace(/ç/g, 'c')
-    .replace(/ô/g, 'o')
-    .replace(/“/g, '')
-    .replace(/”/g, '')
-    .replace(/#/g, 'pound-sign')
-    .replace(/\s/g, '-')
-
-export function formatSlug(slug: string): string {
-  return slug.toLowerCase().replace(/_/g, '-')
+export function delay(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms))
 }

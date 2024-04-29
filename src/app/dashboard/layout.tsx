@@ -19,6 +19,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               <li>
                 <Link href={'/dashboard/post'}>Post</Link>
               </li>
+              <li>
+                <Link href={'/dashboard/category'}>Category</Link>
+              </li>
+              <li>
+                <Link href={'/dashboard/tag'}>Tags</Link>
+              </li>
             </ul>
           </div>
         </div>

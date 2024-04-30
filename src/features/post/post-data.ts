@@ -13,9 +13,18 @@ export async function getPosts() {
       category: true,
       updatedAt: true,
     },
+    orderBy: {
+      createdAt: 'desc',
+    },
   })
 
   return data
+  // return data.map((p) => ({
+  //   ...p,
+  //   thumbnail: p.thumbnail?.startsWith('https://')
+  //     ? p.thumbnail
+  //     : `/images/${p.thumbnail}`,
+  // }))
 }
 
 export async function getTags() {
@@ -52,7 +61,7 @@ export async function getCategory(slug: string) {
       description: true,
       posts: {
         orderBy: {
-          updatedAt: 'desc',
+          createdAt: 'desc',
         },
         include: {
           tags: true,

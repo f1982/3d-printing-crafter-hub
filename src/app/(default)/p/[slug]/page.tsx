@@ -1,12 +1,17 @@
 import { BreadcrumbNav } from '@/components/atoms/breadcrumb-nav'
 import Prose from '@/components/atoms/prose'
 import PageRows from '@/components/layout/page-rows'
+import { Button } from '@/components/ui/button'
 import { getPost, getPosts } from '@/features/post/post-data'
 import { NextShare } from '@/lib/sns-share'
 import { PageSlugProp } from '@/types/page'
 import clsx from 'clsx'
+import matter from 'gray-matter'
 import Image from 'next/image'
+import Link from 'next/link'
 import { Metadata } from 'next/types'
+import { remark } from 'remark'
+import html from 'remark-html'
 
 export async function generateStaticParams(): Promise<any> {
   const data = await getPosts()
@@ -27,10 +32,22 @@ export async function generateMetadata({
 }
 
 export default async function Page({ params }: PageSlugProp) {
-  const post = await getPost(params.slug)
+  let post = await getPost(params.slug)
   if (!post) {
     return null
   }
+
+  post.thumbnail = post?.thumbnail?.startsWith('https://')
+    ? post.thumbnail
+    : '/images/' + post.thumbnail
+  // Use gray-matter to parse the post metadata section
+  const matterResult = matter(post.content || '')
+
+  // Use remark to convert markdown into HTML string
+  const processedContent = await remark()
+    .use(html)
+    .process(matterResult.content)
+  const contentHtml = processedContent.toString()
 
   return (
     <>
@@ -64,7 +81,7 @@ export default async function Page({ params }: PageSlugProp) {
             <div
               className={clsx(
                 'mb-3 absolute top-0 left-0 w-full h-full ',
-                'bg-primary/20',
+                'bg-primary/40',
                 'pointer-events-none',
               )}></div>
             <h1
@@ -78,10 +95,15 @@ export default async function Page({ params }: PageSlugProp) {
         )}
 
         <Prose>
-          <p>{post?.content}</p>
+          <div dangerouslySetInnerHTML={{ __html: contentHtml }}></div>
         </Prose>
 
         {/* <div>{JSON.stringify(post)}</div> */}
+        {post.url && (
+          <Link href={post.url} passHref>
+            <Button variant={'outline'}>Website</Button>
+          </Link>
+        )}
 
         <div className="flex flex-row justify-center">
           <NextShare title={post.title} url=""></NextShare>

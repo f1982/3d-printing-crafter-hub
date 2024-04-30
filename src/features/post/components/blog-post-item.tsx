@@ -10,9 +10,10 @@ const PostItemView: React.FC<{
   title: string
   coverImage: string
   date: string
+  description: string
   url: string
   tags: string[]
-}> = ({ title, coverImage, date, url, tags }) => (
+}> = ({ title, coverImage, description, date, url, tags }) => (
   <div className="w-full flex flex-col gap-3">
     <div className="cursor-pointer relative aspect-video w-full rounded-xl overflow-hidden">
       <Link href={url} passHref>
@@ -72,6 +73,7 @@ const PostItemView: React.FC<{
     {/*  */}
     <div>
       <span className="text-xs text-muted-foreground">{date}</span>
+      <p>{description}</p>
     </div>
   </div>
 )

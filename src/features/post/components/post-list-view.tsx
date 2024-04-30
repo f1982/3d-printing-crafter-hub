@@ -12,6 +12,7 @@ export default function PostListView({ posts }: { posts: any[] }) {
               coverImage={p.thumbnail!}
               date={p.updatedAt.toUTCString()}
               url={p.url!}
+              description={p.description!}
               tags={p.tags ?? ['']}
             />
             {/* {p.title}

@@ -14,8 +14,8 @@ export const getVideoSize = (
 }
 
 export const puppeteerConfig: PuppeteerLaunchOptions = {
-  // headless: "new",
-  headless: false,
+  headless: 'new',
+  // headless: false,
   timeout: 0,
   defaultViewport: getVideoSize(),
   protocolTimeout: 60 * 60 * 1000,

@@ -9,8 +9,11 @@ export async function screenshotVideoByUrl(
 ): Promise<string> {
   return new Promise(async (resolve, reject) => {
     console.log(`📸 Screenshot for: ${url}`)
-    const thumbnailPath =
-      folder + `/${slugify(new URL(url).hostname, { lower: true })}.jpg`
+    let filename = `${slugify(new URL(url).hostname, { lower: true })}.jpg`
+    filename = filename.replace(/www./, '')
+    filename = filename.replaceAll(/./, '-')
+
+    const thumbnailPath = folder + `/${filename}`
     console.log('thumbnailPath', thumbnailPath)
 
     const browser = await puppeteer.launch(config)
@@ -28,6 +31,6 @@ export async function screenshotVideoByUrl(
 
     // Close the browser
     await browser.close()
-    resolve(thumbnailPath)
+    resolve(filename)
   })
 }

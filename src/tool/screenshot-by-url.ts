@@ -10,8 +10,8 @@ export async function screenshotVideoByUrl(
   return new Promise(async (resolve, reject) => {
     console.log(`📸 Screenshot for: ${url}`)
     let filename = `${slugify(new URL(url).hostname, { lower: true })}.jpg`
-    filename = filename.replace(/www./, '')
-    filename = filename.replaceAll(/./, '-')
+    filename = filename.replace(/www/, '')
+    filename = filename.replace(/./, '-')
 
     const thumbnailPath = folder + `/${filename}`
     console.log('thumbnailPath', thumbnailPath)

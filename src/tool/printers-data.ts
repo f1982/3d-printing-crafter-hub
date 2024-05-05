@@ -1,4 +1,4 @@
-import { cadTools } from './data/printers'
+import { controlSoftware } from './data/printers'
 import { puppeteerConfig } from './puppeteer-config'
 import { screenshotVideoByUrl } from './screenshot-by-url'
 
@@ -6,7 +6,7 @@ const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 
 async function main() {
-  for (const data of cadTools) {
+  for (const data of controlSoftware) {
     const filename = await screenshotVideoByUrl(
       data.url,
       './public/images',
@@ -17,10 +17,11 @@ async function main() {
     await prisma.post.create({
       data: {
         category: data.category,
-        categoryId: 85,
+        categoryId: 86,
         slug: data.slug,
         title: data.name,
         content: data.content,
+        description: data.description,
         keywords: data.keywords,
         thumbnail: filename,
         url: data.url,

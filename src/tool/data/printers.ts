@@ -299,3 +299,70 @@ export const cadTools = [
     keywords: 'Tinkercad, CAD, Education',
   },
 ]
+
+export const controlSoftware = [
+  {
+    name: 'Makerbot Desktop',
+    url: 'http://www.makerbot.com/desktop',
+    content:
+      '- Makerbot Desktop enables users to discover, manage, and share their 3D prints easily. \n\n- **Pros**: User-friendly interface, robust print management features. \n\n- **Cons**: Limited compatibility with non-Makerbot printers. \n\n- **Areas of Use**: Suitable for individuals and small businesses.',
+    slug: 'makerbot-desktop',
+    category: '3D Printing Software',
+    keywords: 'Makerbot, Desktop, 3D Printing',
+    description:
+      'Discover, manage and share your 3D prints with Makerbot Desktop.',
+  },
+  {
+    name: 'OctoPrint',
+    url: 'http://octoprint.org',
+    content:
+      '- OctoPrint provides a web interface for controlling 3D printers remotely. \n\n- **Pros**: Remote monitoring and control, plugin system for extensibility. \n\n- **Cons**: Requires additional hardware (Raspberry Pi) for full functionality. \n\n- **Areas of Use**: Ideal for makers and enthusiasts who want to monitor and control their printers remotely.',
+    slug: 'octoprint',
+    category: '3D Printing Software',
+    keywords: 'OctoPrint, Web Interface, 3D Printing',
+    description: 'Web interface for 3D printer with OctoPrint.',
+  },
+  {
+    name: 'PrintRun',
+    url: 'https://github.com/kliment/Printrun',
+    content:
+      '- PrintRun is a pure Python 3D printing host software with basic slicing capabilities. \n\n- **Pros**: Cross-platform compatibility, lightweight and simple to use. \n\n- **Cons**: Limited advanced features compared to other slicers. \n\n- **Areas of Use**: Suitable for beginners and users who prefer simplicity over advanced functionalities.',
+    slug: 'printrun',
+    category: '3D Printing Software',
+    keywords: 'PrintRun, Python, 3D Printing',
+    description:
+      'Pure Python 3D printing host software with basic slicing capabilities.',
+  },
+  {
+    name: 'Repetier',
+    url: 'http://repetier.com',
+    content:
+      '- Repetier offers a comprehensive platform for placing, slicing, previewing, and printing 3D models. \n\n- **Pros**: Feature-rich, supports various slicers, customizable interface. \n\n- **Cons**: Steeper learning curve for beginners. \n\n- **Areas of Use**: Suitable for users with intermediate to advanced 3D printing skills.',
+    slug: 'repetier',
+    category: '3D Printing Software',
+    keywords: 'Repetier, Slicing, Printing',
+    description: 'Place, slice, preview and print with Repetier.',
+  },
+  {
+    name: 'ReplicatorG',
+    url: 'http://replicat.org',
+    content:
+      '- ReplicatorG is an open-source 3D printing program with basic slicing and printing functionalities. \n\n- **Pros**: Open-source, supports various printer models. \n\n- **Cons**: Outdated user interface, limited advanced features. \n\n- **Areas of Use**: Suitable for hobbyists and those who prefer open-source solutions.',
+    slug: 'replicatorg',
+    category: '3D Printing Software',
+    keywords: 'ReplicatorG, Open-source, 3D Printing',
+    description:
+      'Open source 3D printing program with basic slicing and printing functionalities.',
+  },
+  {
+    name: 'Formide',
+    url: 'http://printr.com/formide',
+    content:
+      '- Formide is a platform designed to manage multiple printers, users, and projects efficiently. \n\n- **Pros**: Multi-printer and multi-user support, project management features. \n\n- **Cons**: Limited compatibility with non-supported printers. \n\n- **Areas of Use**: Ideal for businesses and organizations with multiple 3D printers and users.',
+    slug: 'formide',
+    category: '3D Printing Software',
+    keywords: 'Formide, Platform, Management',
+    description:
+      'Platform to manage multiple printers, users and projects with Formide.',
+  },
+]

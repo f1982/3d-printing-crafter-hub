@@ -1,6 +1,6 @@
 'use client'
 
-import * as Dialog from '@radix-ui/react-dialog'
+import { Dialog, DialogContent } from '@/components/ui/dialog'
 import { useRouter } from 'next/navigation'
 import type { FC, ReactNode } from 'react'
 
@@ -16,17 +16,12 @@ const Modal: FC<ModalProps> = ({ children }) => {
       router.back()
     }
   }
-
   return (
-    <Dialog.Root open onOpenChange={handleOnOpenChange}>
-      <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 bg-black/70" />
-
-        <Dialog.DialogContent className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-          {children}
-        </Dialog.DialogContent>
-      </Dialog.Portal>
-    </Dialog.Root>
+    <Dialog open onOpenChange={handleOnOpenChange}>
+      <DialogContent className="sm:max-w-[720px] max-h-screen px-3 sm:px-9 py-12">
+        <div className="h-full overflow-y-auto">{children}</div>
+      </DialogContent>
+    </Dialog>
   )
 }
 

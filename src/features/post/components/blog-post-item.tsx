@@ -16,7 +16,7 @@ const PostItemView: React.FC<{
 }> = ({ title, coverImage, description, date, url, tags }) => (
   <div className="w-full flex flex-col gap-3">
     <div className="cursor-pointer relative aspect-video w-full rounded-xl overflow-hidden">
-      <Link href={url} passHref>
+      <Link href={url} scroll={false}>
         <Image
           className={clsx(
             'w-full h-full object-cover',

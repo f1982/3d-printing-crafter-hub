@@ -1,4 +1,7 @@
 import prisma from '@/utils/db/prisma'
+import matter from 'gray-matter'
+import { remark } from 'remark'
+import html from 'remark-html'
 
 export async function getPosts() {
   const data = await prisma.post.findMany({
@@ -107,4 +110,24 @@ export async function getPost(slug: string) {
   })
 
   return data
+}
+
+export async function getPost2(slug: string) {
+  let post = await getPost(slug)
+  if (!post) {
+    return null
+  }
+
+  post.thumbnail = post?.thumbnail?.startsWith('https://')
+    ? post.thumbnail
+    : '/images/' + post.thumbnail
+
+  // Use gray-matter to parse the post metadata section
+  const matterResult = matter(post.content || '')
+  // Use remark to convert markdown into HTML string
+  const processedContent = await remark()
+    .use(html)
+    .process(matterResult.content)
+  const contentHtml = processedContent.toString()
+  return { ...post, contentHtml }
 }

@@ -8,7 +8,7 @@ import '@/globals.css'
 import clsx from 'clsx'
 import { Metadata } from 'next'
 import { Inter as FontSans } from 'next/font/google'
-import React from 'react'
+import { ReactNode } from 'react'
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -31,7 +31,13 @@ function FloatingElements() {
   )
 }
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function Layout({
+  children,
+  modal,
+}: {
+  children: ReactNode
+  modal: ReactNode
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -43,7 +49,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         {/* <SiteHeader /> */}
 
         {children}
-
+        {modal}
         <Analytics />
         <FloatingElements />
       </body>

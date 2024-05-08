@@ -26,12 +26,13 @@ async function PageContent({
 
   posts = posts?.map((p) => ({
     ...p,
-    url: p.content ? `/p/${p.slug}` : p.url,
+    url: p.description ? `/p/${p.slug}` : p.url,
     thumbnail: p.thumbnail.startsWith('https://')
       ? p.thumbnail
       : '/images/' + p.thumbnail,
     tags: p.tags?.map((t: any) => t.name),
   }))
+  // console.log('posts', posts)
 
   if (!posts) {
     return null

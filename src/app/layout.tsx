@@ -31,13 +31,7 @@ function FloatingElements() {
   )
 }
 
-export default function Layout({
-  children,
-  modal,
-}: {
-  children: ReactNode
-  modal: ReactNode
-}) {
+export default function Layout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -49,7 +43,6 @@ export default function Layout({
         {/* <SiteHeader /> */}
 
         {children}
-        {modal}
         <Analytics />
         <FloatingElements />
       </body>

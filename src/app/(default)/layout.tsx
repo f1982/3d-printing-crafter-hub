@@ -12,11 +12,9 @@ export const viewport = { ...siteViewport }
 export default function Layout({
   children,
   modal,
-  auth,
 }: {
   children: ReactNode
   modal: ReactNode
-  auth: ReactNode
 }) {
   return (
     <>
@@ -33,7 +31,6 @@ export default function Layout({
         </div>
       </div>
       {modal}
-      {auth}
     </>
   )
 }

@@ -61,7 +61,6 @@ const PostItemView: React.FC<{
               key={tag}
               className={clsx(
                 'mr-2 text-xs rounded-xl',
-                // 'bg-accent text-muted-foreground',
                 'bg-popover text-popover-foreground',
               )}>
               {tag}

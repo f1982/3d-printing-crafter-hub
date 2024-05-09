@@ -3,6 +3,7 @@ import PageRows from '@/components/layout/page-rows'
 import PostDetail from '@/features/post/components/post-detail'
 import { getPost, getPost2, getPosts } from '@/features/post/post-data'
 import { PageSlugProp } from '@/types/page'
+import { notFound } from 'next/navigation'
 import { Metadata } from 'next/types'
 
 export async function generateStaticParams(): Promise<any> {
@@ -26,7 +27,7 @@ export async function generateMetadata({
 export default async function Page({ params }: PageSlugProp) {
   let post = await getPost2(params.slug)
   if (!post) {
-    return null
+    notFound()
   }
 
   return (

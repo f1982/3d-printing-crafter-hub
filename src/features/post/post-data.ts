@@ -22,12 +22,6 @@ export async function getPosts() {
   })
 
   return data
-  // return data.map((p) => ({
-  //   ...p,
-  //   thumbnail: p.thumbnail?.startsWith('https://')
-  //     ? p.thumbnail
-  //     : `/images/${p.thumbnail}`,
-  // }))
 }
 
 export async function getTags() {

@@ -34,8 +34,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <SiteFooter />
         </div>
       </div>
-
-      {/* <div>{children}</div> */}
     </>
   )
 }

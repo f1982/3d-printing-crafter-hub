@@ -18,7 +18,7 @@ const Modal: FC<ModalProps> = ({ children }) => {
   }
   return (
     <Dialog open onOpenChange={handleOnOpenChange}>
-      <DialogContent className="sm:max-w-[720px] max-h-screen px-3 sm:px-9 py-12">
+      <DialogContent className="max-w-5xl md:max-w-[720px] max-h-screen h-full md:h-[90%] px-0 py-12">
         <div className="h-full overflow-y-auto">{children}</div>
       </DialogContent>
     </Dialog>

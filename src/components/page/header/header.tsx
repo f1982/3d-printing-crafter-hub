@@ -13,7 +13,8 @@ type HeaderProps = {
 
 const Header = ({ left, right, content, className }: HeaderProps) => {
   return (
-    <header className={clsx('border-b-0 border-b-border', className)}>
+    <header
+      className={clsx('container', 'border-b-0 border-b-border', className)}>
       <div className="flex h-12 w-full items-center justify-between">
         {left}
 

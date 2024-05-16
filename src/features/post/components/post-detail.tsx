@@ -9,7 +9,7 @@ export default function PostDetail({ post }: { post: any }) {
   return (
     <>
       {post?.thumbnail && (
-        <div className="w-full aspect-video relative overflow-hidden">
+        <div className="w-full h-48 relative overflow-hidden">
           <Image
             className="w-full blur-md"
             src={post?.thumbnail}
@@ -31,17 +31,27 @@ export default function PostDetail({ post }: { post: any }) {
           </h1>
         </div>
       )}
-      <Prose>
-        {post.contentHtml && (
-          <div dangerouslySetInnerHTML={{ __html: post.contentHtml }}></div>
+      <div className="mx-auto p-4 md:p-9">
+        {/* <Prose>
+          {post.contentHtml && (
+            <div
+              className="whitespace-pre-line"
+              dangerouslySetInnerHTML={{ __html: post.contentHtml }}></div>
+          )}
+        </Prose> */}
+        <Prose>
+          <div
+            className="whitespace-pre-line"
+            dangerouslySetInnerHTML={{ __html: post.content }}></div>
+        </Prose>
+
+        {/* <div>{JSON.stringify(post)}</div> */}
+        {post.url && (
+          <Link href={post.url} passHref>
+            <Button variant={'outline'}>Website</Button>
+          </Link>
         )}
-      </Prose>
-      {/* <div>{JSON.stringify(post)}</div> */}
-      {post.url && (
-        <Link href={post.url} passHref>
-          <Button variant={'outline'}>Website</Button>
-        </Link>
-      )}
+      </div>
       <div className="flex flex-row justify-center">
         <NextShare title={post.title} url=""></NextShare>
       </div>

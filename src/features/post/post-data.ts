@@ -1,6 +1,7 @@
 import prisma from '@/utils/db/prisma'
 import matter from 'gray-matter'
 import { remark } from 'remark'
+import lineBreaks from 'remark-breaks'
 import html from 'remark-html'
 
 export async function getPosts() {
@@ -120,8 +121,10 @@ export async function getPost2(slug: string) {
   const matterResult = matter(post.content || '')
   // Use remark to convert markdown into HTML string
   const processedContent = await remark()
+    .use(lineBreaks)
     .use(html)
-    .process(matterResult.content)
+    // .process(matterResult.content)
+    .process(post.content || '')
   const contentHtml = processedContent.toString()
   return { ...post, contentHtml }
 }

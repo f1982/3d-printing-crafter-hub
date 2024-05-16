@@ -1,8 +1,8 @@
+import HoverScaleImage from '@/components/atoms/hover-scale-image'
 import { Badge } from '@/components/ui/badge'
 import clsx from 'clsx'
 import { sampleSize } from 'lodash'
 import { Link2 } from 'lucide-react'
-import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
@@ -17,27 +17,7 @@ const PostItemView: React.FC<{
   <div className="w-full flex flex-col gap-3">
     <div className="cursor-pointer relative aspect-video w-full rounded-xl overflow-hidden">
       <Link href={url} scroll={false}>
-        <Image
-          className={clsx(
-            'w-full h-full object-cover',
-            'bg-primary',
-            'ring-1 ring-muted',
-            'scale-100 transition-all duration-300 ease-in-out hover:scale-110',
-          )}
-          src={coverImage}
-          width={600}
-          height={400}
-          loading="lazy"
-          alt={`${title} preview`}
-        />
-
-        {/* Top color mask layer */}
-        <div
-          className={clsx(
-            'mb-3 absolute top-0 left-0 w-full h-full ',
-            'bg-primary/30',
-            'pointer-events-none',
-          )}></div>
+        <HoverScaleImage src={coverImage} alt={title} />
 
         <h1
           className={clsx(

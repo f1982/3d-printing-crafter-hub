@@ -1,8 +1,9 @@
-import { Button } from '../../ui/button'
-import { HeroProps } from './hero-type'
 import { staticUrl } from '@/config/setting'
 import Image from 'next/image'
 import Link from 'next/link'
+
+import { Button } from '../../ui/button'
+import { HeroProps } from './hero-type'
 
 export default function HeroHorizontal(props: HeroProps) {
   return (

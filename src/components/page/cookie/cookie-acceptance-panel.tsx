@@ -1,8 +1,9 @@
 'use client'
 
-import { Button } from '../../ui/button'
 import clsx from 'clsx'
 import { Cookie } from 'lucide-react'
+
+import { Button } from '../../ui/button'
 
 interface CookieAcceptanceProps {
   handleAccept: (flag: boolean) => void

@@ -1,6 +1,5 @@
 'use server'
 
-import { cache } from './file-cache'
 import md5 from 'md5'
 import OpenAI from 'openai'
 import {
@@ -8,6 +7,8 @@ import {
   ChatCompletionMessageParam,
 } from 'openai/resources'
 import { z } from 'zod'
+
+import { cache } from './file-cache'
 
 export type LangOptions = 'zh' | 'en'
 

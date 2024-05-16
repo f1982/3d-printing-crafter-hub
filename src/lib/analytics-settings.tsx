@@ -1,9 +1,10 @@
 'use client'
 
-import { GoogleAnalyticsID, siteHostname } from '../config/setting'
-import { GoogleAnalytics } from '../utils/analytic/google-analytics'
 import { useEffect, useState } from 'react'
 import { useIsMounted } from 'usehooks-ts'
+
+import { GoogleAnalyticsID, siteHostname } from '../config/setting'
+import { GoogleAnalytics } from '../utils/analytic/google-analytics'
 
 export const Analytics = () => {
   const [isDebugging, setIsDebugging] = useState(false)

@@ -1,8 +1,9 @@
 'use client'
 
-import CookieAcceptancePanel from './cookie-acceptance-panel'
 import { useEffect, useState } from 'react'
 import { useLocalStorage } from 'usehooks-ts'
+
+import CookieAcceptancePanel from './cookie-acceptance-panel'
 
 const acceptCookieKey = 'user-accepted-cookies'
 

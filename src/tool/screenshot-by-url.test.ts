@@ -1,7 +1,8 @@
 // Import the necessary modules and functions for testing
+import { expect, test } from 'vitest'
+
 import { puppeteerConfig } from './puppeteer-config'
 import { screenshotVideoByUrl } from './screenshot-by-url'
-import { expect, test } from 'vitest'
 
 // Test case 1: Testing with a valid topic and count
 test('capture screenshot by given url', async () => {

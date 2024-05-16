@@ -1,5 +1,6 @@
-import { LangOptions, askGptWithCache } from './gpt'
 import { z } from 'zod'
+
+import { LangOptions, askGptWithCache } from './gpt'
 
 export const validator = z.object({
   titles: z.array(z.string().min(3).max(200)).min(2),

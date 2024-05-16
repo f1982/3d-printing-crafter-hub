@@ -1,8 +1,9 @@
-import { Article } from '../../../components/atoms/typography'
 import { Post, allPosts } from '@/app/../../.contentlayer/generated'
 import { siteMetadata } from '@/config/setting'
 import { Metadata } from 'next'
 import Link from 'next/link'
+
+import { Article } from '../../../components/atoms/typography'
 
 export async function generateMetadata(): Promise<Metadata> {
   return {

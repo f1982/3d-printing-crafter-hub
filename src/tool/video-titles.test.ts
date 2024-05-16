@@ -1,6 +1,7 @@
 // Import the necessary modules and functions for testing
-import { generateVideoTitles } from './video-titles'
 import { expect, test } from 'vitest'
+
+import { generateVideoTitles } from './video-titles'
 
 // Test case 1: Testing with a valid topic and count
 test('test video title zh', async () => {

@@ -1,9 +1,10 @@
 'use client'
 
-import { copyToClipboard } from '../../utils/utils'
 import { WithClassName } from '@/types/types'
 import clsx from 'clsx'
 import React from 'react'
+
+import { copyToClipboard } from '../../utils/utils'
 
 interface CopyButtonProps extends WithClassName {
   content: string

@@ -1,5 +1,6 @@
-import { MenuItemData } from '../header/menu-data'
 import React from 'react'
+
+import { MenuItemData } from '../header/menu-data'
 
 type FooterProps = {
   logo?: React.ReactNode

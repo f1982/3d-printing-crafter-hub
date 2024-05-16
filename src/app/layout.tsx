@@ -1,6 +1,3 @@
-import { jsonLdWebsite } from '../config/schema-settings'
-import { Analytics } from '../lib/analytics-settings'
-import SchemaJsonLd from '../utils/schema-ld/schema-jsonld'
 import FloatButton from '@/components/atoms/to-top-button'
 import { Toaster } from '@/components/ui/toaster'
 import { siteMetadata, siteViewport } from '@/config/setting'
@@ -9,6 +6,10 @@ import clsx from 'clsx'
 import { Metadata } from 'next'
 import { Inter as FontSans } from 'next/font/google'
 import { ReactNode } from 'react'
+
+import { jsonLdWebsite } from '../config/schema-settings'
+import { Analytics } from '../lib/analytics-settings'
+import SchemaJsonLd from '../utils/schema-ld/schema-jsonld'
 
 const fontSans = FontSans({
   subsets: ['latin'],

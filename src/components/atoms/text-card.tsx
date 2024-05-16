@@ -1,8 +1,9 @@
 'use client'
 
-import { Button } from '../ui/button'
 import clsx from 'clsx'
 import { PropsWithChildren } from 'react'
+
+import { Button } from '../ui/button'
 
 type TextCardProps = PropsWithChildren & {}
 export default function TextCard(props: TextCardProps) {

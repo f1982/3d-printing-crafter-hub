@@ -1,6 +1,7 @@
-import { getCategories } from '../post-data'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
+
+import { getCategories } from '../post-data'
 
 export default function CategoryListView({
   data,

@@ -1,10 +1,12 @@
-import { BreadcrumbNav } from '@/components/atoms/breadcrumb-nav'
-import PageRows from '@/components/layout/page-rows'
-import PostDetail from '@/features/post/components/post-detail'
-import { getPost, getPost2, getPosts } from '@/features/post/post-data'
 import { PageSlugProp } from '@/types/page'
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next/types'
+
+import { BreadcrumbNav } from '@/components/atoms/breadcrumb-nav'
+import PageRows from '@/components/layout/page-rows'
+
+import PostDetail from '@/features/post/components/post-detail'
+import { getPost, getPost2, getPosts } from '@/features/post/post-data'
 
 export async function generateStaticParams(): Promise<any> {
   const data = await getPosts()

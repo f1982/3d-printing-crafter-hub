@@ -1,7 +1,8 @@
 'use client'
 
-import { copyToClipboard } from '@/utils/utils'
 import React from 'react'
+
+import { copyToClipboard } from '@/utils/utils'
 
 import { Button, ButtonProps } from '../ui/button'
 

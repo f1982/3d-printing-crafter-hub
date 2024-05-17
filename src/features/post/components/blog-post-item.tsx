@@ -1,10 +1,12 @@
-import HoverScaleImage from '@/components/atoms/hover-scale-image'
-import { Badge } from '@/components/ui/badge'
+import React from 'react'
+
 import clsx from 'clsx'
 import { sampleSize } from 'lodash'
 import { Link2 } from 'lucide-react'
 import Link from 'next/link'
-import React from 'react'
+
+import HoverScaleImage from '@/components/atoms/hover-scale-image'
+import { Badge } from '@/components/ui/badge'
 
 const PostItemView: React.FC<{
   title: string
@@ -14,14 +16,14 @@ const PostItemView: React.FC<{
   url: string
   tags: string[]
 }> = ({ title, coverImage, description, date, url, tags }) => (
-  <div className="w-full flex flex-col gap-3">
-    <div className="cursor-pointer relative aspect-video w-full rounded-xl overflow-hidden">
+  <div className="flex w-full flex-col gap-3">
+    <div className="relative aspect-video w-full cursor-pointer overflow-hidden rounded-xl">
       <Link href={url} scroll={false}>
         <HoverScaleImage src={coverImage} alt={title} />
 
         <h1
           className={clsx(
-            'text-lg absolute top-0 left-0 p-5 leading-5 font-bold text-white pointer-events-none',
+            'pointer-events-none absolute left-0 top-0 p-5 text-lg font-bold leading-5 text-white',
           )}
           style={{
             textShadow: '0px 1px 0px rgba(0, 0, 0, 0.6)',
@@ -30,17 +32,17 @@ const PostItemView: React.FC<{
         </h1>
         {/* If content is a url, show a link icon */}
         {url.startsWith('http') && (
-          <span className="absolute left-3 bottom-2 text-muted pointer-events-none">
+          <span className="pointer-events-none absolute bottom-2 left-3 text-muted">
             <Link2 className="text-primary-foreground" />
           </span>
         )}
         {/* Tags */}
-        <div className="absolute right-3 bottom-3 text-muted pointer-events-none">
+        <div className="pointer-events-none absolute bottom-3 right-3 text-muted">
           {sampleSize(tags, 2)?.map((tag) => (
             <Badge
               key={tag}
               className={clsx(
-                'mr-2 text-xs rounded-xl',
+                'mr-2 rounded-xl text-xs',
                 'bg-popover text-popover-foreground',
               )}>
               {tag}

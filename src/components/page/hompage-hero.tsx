@@ -1,5 +1,6 @@
-import QuizLogo from '@/assets/images/logo.png'
 import Image from 'next/image'
+
+import QuizLogo from '@/assets/images/logo.png'
 
 import { Paragraph } from '../atoms/typography'
 

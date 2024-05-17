@@ -1,5 +1,6 @@
-import { colorSetting, siteSettings } from '@/config/setting'
 import { MetadataRoute } from 'next'
+
+import { colorSetting, siteSettings } from '@/config/setting'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {

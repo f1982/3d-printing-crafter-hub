@@ -1,10 +1,14 @@
-import { Article, Head1 } from '@/components/atoms/typography'
-import { siteMetadata, siteUrl } from '@/config/setting'
+import { Metadata } from 'next'
+
+import { allPosts } from 'contentlayer/generated'
+import { notFound } from 'next/navigation'
+
 import { DisqusComments } from '@/utils/comment/disqus-comment'
 import { Mdx } from '@/utils/mdx/mdx-components'
-import { allPosts } from 'contentlayer/generated'
-import { Metadata } from 'next'
-import { notFound } from 'next/navigation'
+
+import { Article, Head1 } from '@/components/atoms/typography'
+
+import { siteMetadata, siteUrl } from '@/config/setting'
 
 interface PostProps {
   params: {

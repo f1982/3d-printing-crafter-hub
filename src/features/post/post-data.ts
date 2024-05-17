@@ -1,8 +1,9 @@
-import prisma from '@/utils/db/prisma'
 import matter from 'gray-matter'
 import { remark } from 'remark'
 import lineBreaks from 'remark-breaks'
 import html from 'remark-html'
+
+import prisma from '@/utils/db/prisma'
 
 export async function getPosts() {
   const data = await prisma.post.findMany({

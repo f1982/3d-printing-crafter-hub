@@ -1,6 +1,7 @@
-import { staticUrl } from '@/config/setting'
 import Image from 'next/image'
 import Link from 'next/link'
+
+import { staticUrl } from '@/config/setting'
 
 import { Button } from '../../ui/button'
 import { HeroProps } from './hero-type'
@@ -17,7 +18,7 @@ export default function HeroHorizontal(props: HeroProps) {
             {props.description}
           </p>
           {props.label && props.link && (
-            <div className="flex flex-row justify-center w-full md:w-auto gap-x-6">
+            <div className="flex w-full flex-row justify-center gap-x-6 md:w-auto">
               <Link href={'/search'}>
                 <Button>Start exploring</Button>
               </Link>
@@ -27,7 +28,7 @@ export default function HeroHorizontal(props: HeroProps) {
             </div>
           )}
         </div>
-        <div className="mb-3 w-5/6 md:w-1/2 lg:w-full md:mb-0 ">
+        <div className="mb-3 w-5/6 md:mb-0 md:w-1/2 lg:w-full ">
           <Image
             width={1024}
             height={1024}

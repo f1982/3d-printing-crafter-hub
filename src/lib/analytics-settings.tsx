@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+
 import { useIsMounted } from 'usehooks-ts'
 
 import { GoogleAnalyticsID, siteHostname } from '../config/setting'

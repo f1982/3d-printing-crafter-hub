@@ -1,7 +1,9 @@
-import { Post, allPosts } from '@/app/../../.contentlayer/generated'
-import { siteMetadata } from '@/config/setting'
 import { Metadata } from 'next'
+
+import { Post, allPosts } from '@/app/../../.contentlayer/generated'
 import Link from 'next/link'
+
+import { siteMetadata } from '@/config/setting'
 
 import { Article } from '../../../components/atoms/typography'
 

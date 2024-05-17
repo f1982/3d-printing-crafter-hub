@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+
 import { useLocalStorage } from 'usehooks-ts'
 
 import CookieAcceptancePanel from './cookie-acceptance-panel'

@@ -1,5 +1,6 @@
-import { siteMetadata } from '@/config/setting'
 import PageContent from '@/features/post/components/page-content'
+
+import { siteMetadata } from '@/config/setting'
 
 export const metadata = { ...siteMetadata }
 

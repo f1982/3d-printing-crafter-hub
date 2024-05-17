@@ -1,7 +1,8 @@
-import PageContent from '@/features/post/components/page-content'
-import { getCategories, getCategory } from '@/features/post/post-data'
 import { PageSlugProp } from '@/types/page'
 import { Metadata } from 'next/types'
+
+import PageContent from '@/features/post/components/page-content'
+import { getCategories, getCategory } from '@/features/post/post-data'
 
 export async function generateStaticParams(): Promise<any> {
   const data = await getCategories()

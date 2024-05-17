@@ -1,15 +1,17 @@
-import Prose from '@/components/atoms/prose'
-import { Button } from '@/components/ui/button'
-import { NextShare } from '@/lib/sns-share'
 import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
+
+import { NextShare } from '@/lib/sns-share'
+
+import Prose from '@/components/atoms/prose'
+import { Button } from '@/components/ui/button'
 
 export default function PostDetail({ post }: { post: any }) {
   return (
     <>
       {post?.thumbnail && (
-        <div className="w-full h-48 relative overflow-hidden">
+        <div className="relative h-48 w-full overflow-hidden">
           <Image
             className="w-full blur-md"
             src={post?.thumbnail}
@@ -18,7 +20,7 @@ export default function PostDetail({ post }: { post: any }) {
             alt=""></Image>
           <div
             className={clsx(
-              'mb-3 absolute top-0 left-0 w-full h-full ',
+              'absolute left-0 top-0 mb-3 h-full w-full ',
               'bg-primary/40',
               'pointer-events-none',
             )}></div>

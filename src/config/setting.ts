@@ -1,5 +1,6 @@
-import { SiteSetting } from '@/types/page'
 import { Metadata, Viewport } from 'next'
+
+import { SiteSetting } from '@/types/page'
 import { Robots } from 'next/dist/lib/metadata/types/metadata-types'
 import { OpenGraph } from 'next/dist/lib/metadata/types/opengraph-types'
 import { Twitter } from 'next/dist/lib/metadata/types/twitter-types'

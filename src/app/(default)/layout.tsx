@@ -1,10 +1,14 @@
-import { siteViewport } from '@/config/setting'
-import { CategoryList } from '@/features/post/components/category-list-view'
+import { ReactNode } from 'react'
+
 import '@/globals.css'
+
 import SiteFooter from '@/lib/site-footer'
 import SiteHeader from '@/lib/site-header'
 import SiteLogo from '@/lib/site-logo'
-import { ReactNode } from 'react'
+
+import { CategoryList } from '@/features/post/components/category-list-view'
+
+import { siteViewport } from '@/config/setting'
 
 export const viewport = { ...siteViewport }
 
@@ -18,11 +22,11 @@ export default function Layout({
   return (
     <>
       <div className="mx-4 mb-36 flex flex-col gap-9 md:flex-row">
-        <div className="hidden lg:flex flex-col gap-12 py-12 max-w-[10rem] ">
+        <div className="hidden max-w-[10rem] flex-col gap-12 py-12 lg:flex ">
           <SiteLogo />
           <CategoryList />
         </div>
-        <div className="flex-1 flex flex-col gap-12 py-12">
+        <div className="flex flex-1 flex-col gap-12 py-12">
           <SiteHeader />
           {children}
           <SiteFooter />

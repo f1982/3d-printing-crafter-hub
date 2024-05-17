@@ -1,9 +1,12 @@
+import { Suspense } from 'react'
+
+import { notFound } from 'next/navigation'
+
 import Modal from '@/components/atoms/page-modal'
 import Spiner from '@/components/atoms/spinner'
+
 import PostDetail from '@/features/post/components/post-detail'
 import { getPost2 } from '@/features/post/post-data'
-import { notFound } from 'next/navigation'
-import { Suspense } from 'react'
 
 interface PopProps {
   params: {

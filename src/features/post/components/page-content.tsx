@@ -42,7 +42,7 @@ async function PageContent({
     <>
       <div>
         {!!tags?.length && (
-          <div className="w-full mb-6 hidden lg:block">
+          <div className="mb-6 hidden w-full lg:block">
             <Tags data={tags} />
           </div>
         )}

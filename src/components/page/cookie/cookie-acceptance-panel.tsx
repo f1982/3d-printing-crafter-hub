@@ -15,22 +15,22 @@ export default function CookieAcceptancePanel({
   return (
     <div
       className={clsx(
-        'fixed bottom-0 left-0 md:bottom-3 md:left-3 w-full md:w-96',
-        'flex flex-col justify-center items-center',
+        'fixed bottom-0 left-0 w-full md:bottom-3 md:left-3 md:w-96',
+        'flex flex-col items-center justify-center',
         'gap-3',
-        'py-3 px-4 md:px-9 md:py-9 ',
-        'ring-1 ring-slate-200 rounded-xl shadow-lg dark:bg-gray-800  bg-white',
+        'px-4 py-3 md:px-9 md:py-9 ',
+        'rounded-xl bg-white shadow-lg ring-1 ring-slate-200  dark:bg-gray-800',
       )}>
       <div role="banner">
-        <Cookie className="w-16 h-16 fill-orange-400 stroke-orange-900" />
+        <Cookie className="h-16 w-16 fill-orange-400 stroke-orange-900" />
       </div>
       <div className="prose">
         <h3
           role="main"
-          className="text-3xl dark:text-white lg:text-4xl font-semibold leading-7 lg:leading-9 text-center text-gray-800">
+          className="text-center text-3xl font-semibold leading-7 text-gray-800 dark:text-white lg:text-4xl lg:leading-9">
           We use cookies
         </h3>
-        <p className="sm:w-80 text-base dark:text-white leading-7 text-center text-gray-800">
+        <p className="text-center text-base leading-7 text-gray-800 dark:text-white sm:w-80">
           Please, accept these sweeties to continue enjoying our site!
         </p>
       </div>

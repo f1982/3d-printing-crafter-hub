@@ -1,8 +1,9 @@
 // import { X } from 'lucide-react'
+import * as React from 'react'
+
 import { Cross1Icon } from '@radix-ui/react-icons'
 import * as ToastPrimitives from '@radix-ui/react-toast'
 import { type VariantProps, cva } from 'class-variance-authority'
-import * as React from 'react'
 
 import { cn } from './utils'
 

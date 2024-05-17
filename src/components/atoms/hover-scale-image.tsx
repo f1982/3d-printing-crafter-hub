@@ -13,7 +13,7 @@ export default function HoverScaleImage({
     <div className="relative aspect-video w-full cursor-pointer overflow-hidden rounded-xl">
       <Image
         className={clsx(
-          'absolute inset-0 aspect-video rounded-xl object-cover bg-card',
+          'absolute inset-0 aspect-video rounded-xl bg-card object-cover',
           'ring-1 ring-muted',
           'scale-100 transition-all duration-200 ease-in-out hover:scale-110',
         )}

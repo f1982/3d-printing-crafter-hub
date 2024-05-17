@@ -1,15 +1,16 @@
+import clsx from 'clsx'
+
 import AuroraLight from '../../atoms/aurora-light'
 import { Button } from '../../ui/button'
 import { HeroProps } from './hero-type'
-import clsx from 'clsx'
 
 export default function Hero(props: HeroProps) {
   return (
     <>
-      <div className={clsx('isolate relative px-6 pt-9 lg:px-8 ')}>
+      <div className={clsx('relative isolate px-6 pt-9 lg:px-8 ')}>
         <AuroraLight />
         <div className={clsx('mx-auto max-w-3xl py-12')}>
-          <div className="prose prose-md md:prose-xl dark:prose-invert max-w-none text-left sm:text-center">
+          <div className="prose-md prose max-w-none text-left dark:prose-invert md:prose-xl sm:text-center">
             <div className={clsx('hidden sm:mb-8 sm:flex sm:justify-center')}>
               {props.subtitle && (
                 <div

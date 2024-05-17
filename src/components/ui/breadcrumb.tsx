@@ -1,5 +1,6 @@
-import { ChevronRightIcon } from '@radix-ui/react-icons'
 import * as React from 'react'
+
+import { ChevronRightIcon } from '@radix-ui/react-icons'
 
 import { cn, getValidChildren } from './utils'
 

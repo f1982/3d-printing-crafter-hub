@@ -1,9 +1,11 @@
 'use client'
 
-import { cn } from '@/components/ui/utils'
+import * as React from 'react'
+
 import * as DialogPrimitive from '@radix-ui/react-dialog'
 import { Cross2Icon } from '@radix-ui/react-icons'
-import * as React from 'react'
+
+import { cn } from '@/components/ui/utils'
 
 const Dialog = DialogPrimitive.Root
 

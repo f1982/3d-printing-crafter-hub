@@ -1,5 +1,6 @@
-import { MenuItemData } from '@/components/page/header/menu-data'
 import { Twitter, Youtube } from 'lucide-react'
+
+import { MenuItemData } from '@/components/page/header/menu-data'
 
 export const navMenuData: MenuItemData[] = [
   {

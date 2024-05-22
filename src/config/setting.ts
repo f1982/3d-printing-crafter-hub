@@ -8,14 +8,6 @@ import { Twitter } from 'next/dist/lib/metadata/types/twitter-types'
 export const siteHostname = 'emojiu.cc'
 export const siteUrl = `https://${siteHostname}`
 
-export const staticUrl = (path: string) => {
-  // Static github project
-  // https://github.com/f1982/planet-of-images
-  const staticRootUrl =
-    'https://raw.githubusercontent.com/f1982/planet-of-images/main/emojiu'
-  return `${staticRootUrl}/${path}`
-}
-
 export const GoogleAnalyticsID = 'G-L8EFRS04CF'
 
 export const disqus = {
@@ -28,6 +20,8 @@ export const siteSettings: SiteSetting = {
   title: 'Copy paste iphone emojis, Get Heart, Laughing, Skull, Nerd Emojis',
   description:
     'Search for emojis with just one click! Explore a variety of emojis, including heart, laughing, skull, nerd, sad, iPhone, eyes, star, thumbs up, kiss, and heart hand emojis. Enhance your online communication and express yourself effortlessly.',
+  keywords:
+    'Emoji Copy Paste, Heart Emoji, Laughing Emoji, Skull Emoji, Nerd Emoji, Sad Emoji, Get Emojis in One Click, iPhone Emoji, Eyes Emoji, Star Emoji, Thumbs Up Emoji, Kiss Emoji, Heart Hand Emoji',
   author: 'emoji you',
   creator: '@emojiucc',
 }
@@ -95,8 +89,7 @@ export const siteMetadata: Metadata = {
   category: 'technology',
   title: siteSettings.title,
   description: siteSettings.description,
-  keywords:
-    'Emoji Copy Paste, Heart Emoji, Laughing Emoji, Skull Emoji, Nerd Emoji, Sad Emoji, Get Emojis in One Click, iPhone Emoji, Eyes Emoji, Star Emoji, Thumbs Up Emoji, Kiss Emoji, Heart Hand Emoji',
+  keywords: siteSettings.keywords,
   publisher: siteSettings.creator,
   metadataBase: new URL(siteUrl),
   alternates: {
@@ -123,12 +116,4 @@ export const siteMetadata: Metadata = {
 export const socialMediaUrls = {
   youtube: 'https://youtube.com/@emojiyou?si=HzrJOJg8FyI51bjj',
   twitter: 'https://twitter.com/emojiucc',
-}
-
-export const routeSetting = {
-  search: 'search',
-  category: 'category',
-  theme: 'theme',
-  symbol: 'symbol',
-  tool: 'tool',
 }

@@ -5,6 +5,7 @@ export type SiteSetting = {
   url: string
   title: string
   description: string
+  keywords: string
   author: string
   creator: string
 }

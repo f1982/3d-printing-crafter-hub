@@ -34,20 +34,10 @@ export default function PostDetail({ post }: { post: any }) {
         </div>
       )}
       <div className="mx-auto p-4 md:p-9">
-        {/* <Prose>
-          {post.contentHtml && (
-            <div
-              className="whitespace-pre-line"
-              dangerouslySetInnerHTML={{ __html: post.contentHtml }}></div>
-          )}
-        </Prose> */}
         <Prose>
-          <div
-            className="whitespace-pre-line"
-            dangerouslySetInnerHTML={{ __html: post.content }}></div>
+          <div dangerouslySetInnerHTML={{ __html: post.content }} />
         </Prose>
 
-        {/* <div>{JSON.stringify(post)}</div> */}
         {post.url && (
           <Link href={post.url} passHref>
             <Button variant={'outline'}>Website</Button>

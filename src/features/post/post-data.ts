@@ -1,6 +1,4 @@
-import matter from 'gray-matter'
 import { remark } from 'remark'
-import lineBreaks from 'remark-breaks'
 import html from 'remark-html'
 
 import prisma from '@/utils/db/prisma'
@@ -38,6 +36,19 @@ export async function getTags() {
 
   return data
 }
+
+export async function getGroups() {
+  const data = await prisma.group.findMany({
+    select: {
+      id: true,
+      name: true,
+      categories: true,
+    },
+  })
+
+  return data
+}
+
 export async function getCategories() {
   const data = await prisma.category.findMany({
     select: {
@@ -108,6 +119,11 @@ export async function getPost(slug: string) {
   return data
 }
 
+async function markdownToHtml(markdown: string) {
+  const result = await remark().use(html, { sanitize: true }).process(markdown)
+  return result.toString()
+}
+
 export async function getPost2(slug: string) {
   let post = await getPost(slug)
   if (!post) {
@@ -118,14 +134,6 @@ export async function getPost2(slug: string) {
     ? post.thumbnail
     : '/images/' + post.thumbnail
 
-  // Use gray-matter to parse the post metadata section
-  const matterResult = matter(post.content || '')
-  // Use remark to convert markdown into HTML string
-  const processedContent = await remark()
-    .use(lineBreaks)
-    .use(html)
-    // .process(matterResult.content)
-    .process(post.content || '')
-  const contentHtml = processedContent.toString()
-  return { ...post, contentHtml }
+  post.content = await markdownToHtml(post.content || '')
+  return post
 }

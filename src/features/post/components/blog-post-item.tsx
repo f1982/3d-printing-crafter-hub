@@ -8,14 +8,23 @@ import Link from 'next/link'
 import HoverScaleImage from '@/components/atoms/hover-scale-image'
 import { Badge } from '@/components/ui/badge'
 
-const PostItemView: React.FC<{
+interface BlogPostItemProps {
   title: string
   coverImage: string
   date: string
   description: string
   url: string
   tags: string[]
-}> = ({ title, coverImage, description, date, url, tags }) => (
+}
+
+const PostItemView: React.FC<BlogPostItemProps> = ({
+  title,
+  coverImage,
+  description,
+  date,
+  url,
+  tags,
+}) => (
   <div className="flex w-full flex-col gap-3">
     <div className="relative aspect-video w-full cursor-pointer overflow-hidden rounded-xl">
       <Link href={url} scroll={false}>
@@ -51,7 +60,7 @@ const PostItemView: React.FC<{
         </div>
       </Link>
     </div>
-    {/*  */}
+
     <div>
       <span className="text-xs text-muted-foreground">{date}</span>
       <p>{description}</p>

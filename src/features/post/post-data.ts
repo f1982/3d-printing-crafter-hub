@@ -25,7 +25,7 @@ export async function getPosts() {
   })
 
   if (debuggingMode) {
-    await delay(3000)
+    await delay(1500)
   }
 
   return data
@@ -54,7 +54,7 @@ export async function getGroups() {
   })
 
   if (debuggingMode) {
-    await delay(3000)
+    await delay(1500)
   }
 
   return data
@@ -93,7 +93,7 @@ export async function getCategory(slug: string) {
   })
 
   if (debuggingMode) {
-    await delay(3000)
+    await delay(1500)
   }
 
   return data
@@ -110,6 +110,10 @@ export async function getTag(slug: string) {
     },
   })
 
+  if (debuggingMode) {
+    await delay(1500)
+  }
+
   return data
 }
 
@@ -123,7 +127,7 @@ export async function getPost(slug: string) {
   })
 
   if (debuggingMode) {
-    await delay(3000)
+    await delay(1500)
   }
 
   return data
@@ -134,7 +138,7 @@ async function markdownToHtml(markdown: string) {
   return result.toString()
 }
 
-export async function getPost2(slug: string) {
+export async function getProcessedPost(slug: string) {
   let post = await getPost(slug)
   if (!post) {
     return null

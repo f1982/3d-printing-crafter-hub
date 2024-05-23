@@ -16,7 +16,7 @@ export const disqus = {
   shortname: 'emojiu',
 }
 
-export const debuggingMode = true
+export const debuggingMode = false
 
 export const siteSettings: SiteSetting = {
   name: 'Emoji You',

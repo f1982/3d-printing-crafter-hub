@@ -2,7 +2,7 @@ import { PageSlugProp } from '@/types/page'
 import { Metadata } from 'next/types'
 
 import PageContent from '@/features/post/components/page-content'
-import { getPost, getTags } from '@/features/post/post-data'
+import { getTag, getTags } from '@/features/post/post-data'
 
 export async function generateStaticParams(): Promise<any> {
   const data = await getTags()
@@ -14,11 +14,12 @@ export async function generateStaticParams(): Promise<any> {
 export async function generateMetadata({
   params,
 }: PageSlugProp): Promise<Metadata> {
-  const post = await getPost(params.slug)
+  const tag = await getTag(params.slug)
+
   return {
-    title: post?.title,
-    description: post?.description,
-    keywords: post?.tags.map((tag) => tag.name).join(', '),
+    title: tag?.name,
+    description: '',
+    keywords: '',
   }
 }
 

@@ -6,7 +6,7 @@ import Modal from '@/components/atoms/page-modal'
 import Spiner from '@/components/atoms/spinner'
 
 import PostDetail from '@/features/post/components/post-detail'
-import { getPost2 } from '@/features/post/post-data'
+import { getProcessedPost } from '@/features/post/post-data'
 
 interface PopProps {
   params: {
@@ -15,9 +15,7 @@ interface PopProps {
 }
 
 async function PostDetailWrapper({ slug }: { slug: string }) {
-  let post = await getPost2(slug)
-  console.log('modal post', post)
-  await new Promise((r) => setTimeout(r, 1000))
+  let post = await getProcessedPost(slug)
   if (!post) {
     notFound()
   }

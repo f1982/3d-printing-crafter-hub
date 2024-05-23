@@ -6,7 +6,7 @@ import { Metadata } from 'next/types'
 import Spiner from '@/components/atoms/spinner'
 
 import PageContent from '@/features/post/components/page-content'
-import { getCategories } from '@/features/post/post-data'
+import { getCategories, getCategory } from '@/features/post/post-data'
 
 export async function generateStaticParams(): Promise<any> {
   const data = await getCategories()
@@ -18,15 +18,21 @@ export async function generateStaticParams(): Promise<any> {
 export async function generateMetadata({
   params,
 }: PageSlugProp): Promise<Metadata> {
-  return Promise.resolve({} as any)
+  const data = await getCategory(params.slug)
+  if (!data) {
+    return {}
+  }
+  return {
+    title: data.title,
+    description: data.description,
+    keywords: '',
+  }
 }
 
 export default async function CategoryPage({ params }: PageSlugProp) {
   return (
-    <>
-      <Suspense fallback={<Spiner />}>
-        <PageContent category={params.slug} />
-      </Suspense>
-    </>
+    <Suspense fallback={<Spiner />}>
+      <PageContent category={params.slug} />
+    </Suspense>
   )
 }

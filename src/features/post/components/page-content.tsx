@@ -32,7 +32,6 @@ async function PageContent({
       : '/images/' + p.thumbnail,
     tags: p.tags?.map((t: any) => t.name),
   }))
-  // console.log('posts', posts)
 
   if (!posts) {
     return null

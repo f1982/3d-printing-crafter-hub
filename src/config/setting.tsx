@@ -5,6 +5,8 @@ import { Robots } from 'next/dist/lib/metadata/types/metadata-types'
 import { OpenGraph } from 'next/dist/lib/metadata/types/opengraph-types'
 import { Twitter } from 'next/dist/lib/metadata/types/twitter-types'
 
+import SiteLogo from '@/lib/site-logo'
+
 export const siteHostname = 'emojiu.cc'
 export const siteUrl = `https://${siteHostname}`
 
@@ -14,16 +16,20 @@ export const disqus = {
   shortname: 'emojiu',
 }
 
+export const debuggingMode = true
+
 export const siteSettings: SiteSetting = {
   name: 'Emoji You',
   url: siteUrl,
   title: 'Copy paste iphone emojis, Get Heart, Laughing, Skull, Nerd Emojis',
+  slogan: 'Copy paste iphone emojis with ease',
   description:
     'Search for emojis with just one click! Explore a variety of emojis, including heart, laughing, skull, nerd, sad, iPhone, eyes, star, thumbs up, kiss, and heart hand emojis. Enhance your online communication and express yourself effortlessly.',
   keywords:
     'Emoji Copy Paste, Heart Emoji, Laughing Emoji, Skull Emoji, Nerd Emoji, Sad Emoji, Get Emojis in One Click, iPhone Emoji, Eyes Emoji, Star Emoji, Thumbs Up Emoji, Kiss Emoji, Heart Hand Emoji',
   author: 'emoji you',
   creator: '@emojiucc',
+  logo: <SiteLogo />,
 }
 
 // Add icon image in public folder

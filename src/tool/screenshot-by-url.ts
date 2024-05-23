@@ -25,7 +25,6 @@ export async function screenshotVideoByUrl(
     await page.setViewport(size)
     console.log(`🤌 Set the browser size to ${size.width}x${size.height}`)
 
-    // await delay(1000)
     await page.screenshot({ path: thumbnailPath })
     console.log('✅ Thumbnail file created')
 

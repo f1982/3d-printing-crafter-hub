@@ -4,10 +4,12 @@ export type SiteSetting = {
   name: string
   url: string
   title: string
+  slogan: string
   description: string
   keywords: string
   author: string
   creator: string
+  logo: React.ReactNode
 }
 
 export type PageSetting = {

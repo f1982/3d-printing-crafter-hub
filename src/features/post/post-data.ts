@@ -2,6 +2,9 @@ import { remark } from 'remark'
 import html from 'remark-html'
 
 import prisma from '@/utils/db/prisma'
+import { delay } from '@/utils/utils'
+
+import { debuggingMode } from '@/config/setting'
 
 export async function getPosts() {
   const data = await prisma.post.findMany({
@@ -20,6 +23,10 @@ export async function getPosts() {
       createdAt: 'desc',
     },
   })
+
+  if (debuggingMode) {
+    await delay(3000)
+  }
 
   return data
 }
@@ -45,6 +52,10 @@ export async function getGroups() {
       categories: true,
     },
   })
+
+  if (debuggingMode) {
+    await delay(3000)
+  }
 
   return data
 }
@@ -81,6 +92,10 @@ export async function getCategory(slug: string) {
     },
   })
 
+  if (debuggingMode) {
+    await delay(3000)
+  }
+
   return data
 }
 
@@ -101,20 +116,15 @@ export async function getTag(slug: string) {
 export async function getPost(slug: string) {
   const data = await prisma.post.findUnique({
     where: { slug },
-    // select: {
-    //   id: true,
-    //   title: true,
-    //   slug: true,
-    //   description: true,
-    //   thumbnail: true,
-    //   tags: true,
-    //   category: true,
-    // },
     include: {
       Category: true,
       tags: true,
     },
   })
+
+  if (debuggingMode) {
+    await delay(3000)
+  }
 
   return data
 }

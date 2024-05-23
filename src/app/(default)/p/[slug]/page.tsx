@@ -28,6 +28,7 @@ export async function generateMetadata({
 
 export default async function Page({ params }: PageSlugProp) {
   let post = await getPost2(params.slug)
+
   if (!post) {
     notFound()
   }

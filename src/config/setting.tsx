@@ -19,7 +19,7 @@ export const disqus = {
 export const debuggingMode = false
 
 export const siteSettings: SiteSetting = {
-  name: 'Emoji You',
+  name: 'Open AI Hub',
   url: siteUrl,
   title: 'Copy paste iphone emojis, Get Heart, Laughing, Skull, Nerd Emojis',
   slogan: 'Copy paste iphone emojis with ease',

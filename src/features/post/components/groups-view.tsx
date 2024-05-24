@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button'
 import { getGroups } from '../post-data'
 
 export default async function GroupsView() {
-  let groups = await getGroups()
+  const groups = await getGroups()
 
   return (
     <>
@@ -14,7 +14,9 @@ export default async function GroupsView() {
           return (
             <div key={g.name} className="flex flex-col gap-3">
               <div>
-                <span className="bg-accent text-xl font-bold">{g.name}</span>
+                <span className="bg-secondary text-xl font-bold text-secondary-foreground">
+                  {g.name}
+                </span>
               </div>
               <div className="flex flex-wrap gap-3">
                 {g.categories.map((c) => {

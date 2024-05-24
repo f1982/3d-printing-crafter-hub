@@ -31,17 +31,84 @@ export async function getPosts() {
   return data
 }
 
-export async function getTags() {
-  const data = await prisma.tag.findMany({
+export async function getPostsBy(category?: string, tag?: string) {
+  const data = await prisma.post.findMany({
     select: {
       id: true,
+      title: true,
       slug: true,
-      name: true,
-      posts: true,
+      description: true,
+      thumbnail: true,
+      tags: true,
+      url: true,
+      category: true,
+      updatedAt: true,
+    },
+    where: {
+      AND: [
+        category
+          ? {
+              Category: {
+                slug: category,
+              },
+            }
+          : {},
+        tag
+          ? {
+              tags: {
+                some: {
+                  slug: tag,
+                },
+              },
+            }
+          : {},
+      ],
+    },
+    orderBy: {
+      createdAt: 'desc',
     },
   })
 
+  if (debuggingMode) {
+    await delay(1500)
+  }
+
   return data
+}
+
+export async function getProcessedPosts(category?: string, tag?: string) {
+  let posts = await getPostsBy(category, tag)
+  return posts?.map((p) => ({
+    ...p,
+    url: p.description ? `/p/${p.slug}` : p.url,
+    thumbnail: p.thumbnail?.startsWith('https://')
+      ? p.thumbnail
+      : '/images/' + p.thumbnail,
+    tags: p.tags?.map((t: any) => t.name),
+  }))
+}
+
+export async function getTagsByCategorySlug(categorySlug: string) {
+  console.log('getTagsByCategorySlug')
+  try {
+    const category = await prisma.category.findUnique({
+      where: {
+        slug: categorySlug,
+      },
+      include: {
+        tags: true,
+      },
+    })
+
+    if (!category) {
+      throw new Error(`Category with slug "${categorySlug}" not found`)
+    }
+
+    return category.tags
+  } catch (error) {
+    console.error('Error fetching tags:', error)
+    throw error
+  }
 }
 
 export async function getGroups() {

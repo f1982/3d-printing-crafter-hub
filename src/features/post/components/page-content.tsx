@@ -1,6 +1,5 @@
-import { getCategory, getPosts, getTag } from '../post-data'
-import PostListView from './post-list-view'
-import Tags from './post-tags'
+import { getProcessedPosts, getTagsByCategorySlug } from '../post-data'
+import PostCardListView from './post-card-list-view'
 
 async function PageContent({
   category,
@@ -10,28 +9,17 @@ async function PageContent({
   tag?: string
 }) {
   let posts: any[] | undefined = undefined
-  let tags: { name: string; url: string }[] | undefined = undefined
 
+  posts = await getProcessedPosts(category, tag)
+
+  // let tags: { name: string; url: string }[] | undefined = undefined
+  let tags: string[] | undefined = undefined
   if (category) {
-    const data = await getCategory(category)
-    posts = data?.posts
-    tags = data?.tags.map((t) => ({ name: t.name, url: `/t/${t.slug}` }))
+    const ot = await getTagsByCategorySlug(category)
+    console.log('ot', ot)
+    let tags = ot.map((t) => t.name)
+    console.log('tags', tags)
   }
-  if (tag) {
-    posts = (await getTag(tag))?.posts
-  }
-  if (!category && !tag) {
-    posts = await getPosts()
-  }
-
-  posts = posts?.map((p) => ({
-    ...p,
-    url: p.description ? `/p/${p.slug}` : p.url,
-    thumbnail: p.thumbnail.startsWith('https://')
-      ? p.thumbnail
-      : '/images/' + p.thumbnail,
-    tags: p.tags?.map((t: any) => t.name),
-  }))
 
   if (!posts) {
     return null
@@ -40,12 +28,9 @@ async function PageContent({
   return (
     <>
       <div>
-        {!!tags?.length && (
-          <div className="mb-6 hidden w-full lg:block">
-            <Tags data={tags} />
-          </div>
-        )}
-        <PostListView posts={posts} />
+        <PostCardListView posts={posts} />
+
+        {tags && <Tags tags={tags} />}
       </div>
     </>
   )

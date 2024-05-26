@@ -1,9 +1,11 @@
 'use client'
 
-import { copyToClipboard } from '../../utils/utils'
+import React from 'react'
+
 import { WithClassName } from '@/types/types'
 import clsx from 'clsx'
-import React from 'react'
+
+import { copyToClipboard } from '../../utils/utils'
 
 interface CopyButtonProps extends WithClassName {
   content: string
@@ -21,7 +23,7 @@ export const CopyWithHintButton = ({ content, className }: CopyButtonProps) => {
   return (
     <>
       <button
-        className={clsx('absolute top-0 left-0 bottom-0 right-0', className)}
+        className={clsx('absolute bottom-0 left-0 right-0 top-0', className)}
         onClick={handleCopy}></button>
       {copied && <span className="emoji-copy-hint">Copied!</span>}
     </>

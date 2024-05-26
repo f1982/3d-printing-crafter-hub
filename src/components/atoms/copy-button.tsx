@@ -1,8 +1,10 @@
 'use client'
 
-import { Button, ButtonProps } from '../ui/button'
-import { copyToClipboard } from '@/utils/utils'
 import React from 'react'
+
+import { copyToClipboard } from '@/utils/utils'
+
+import { Button, ButtonProps } from '../ui/button'
 
 interface CopyButtonProps extends ButtonProps {
   content: string

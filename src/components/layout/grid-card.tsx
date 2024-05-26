@@ -1,11 +1,12 @@
-import clsx from 'clsx'
 import { PropsWithChildren } from 'react'
+
+import clsx from 'clsx'
 
 export default function GridCards({ children }: PropsWithChildren) {
   return (
     <div
       className={clsx(
-        'w-full mx-0 grid md:mx-auto',
+        'mx-0 grid w-full md:mx-auto',
         // sm
         'gap-y-6',
         'grid-cols-1 ', // <md show 4 grids
@@ -24,7 +25,7 @@ export function GridIconView({ children }: PropsWithChildren) {
   return (
     <div
       className={clsx(
-        'w-full mx-0 grid md:mx-auto',
+        'mx-0 grid w-full md:mx-auto',
         // sm
         'gap-x-2 gap-y-2 ',
         'grid-cols-4 ', // <md show 4 grids

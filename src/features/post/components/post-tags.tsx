@@ -1,5 +1,6 @@
-import { Button } from '@/components/ui/button'
 import Link from 'next/link'
+
+import { Button } from '@/components/ui/button'
 
 export default function Tags({
   data,
@@ -14,7 +15,7 @@ export default function Tags({
             <Link key={t.name} href={t.url}>
               <Button
                 variant="secondary"
-                className="rounded-xl text-sm font-normal p-3 h-6">
+                className="h-6 rounded-xl p-3 text-sm font-normal">
                 <span>{t.name}</span>
               </Button>
             </Link>

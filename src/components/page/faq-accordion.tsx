@@ -1,10 +1,11 @@
-import { Head2 } from '../atoms/typography'
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion'
+
+import { Head2 } from '../atoms/typography'
 
 interface FAQProps {
   list: FAQItemData[]

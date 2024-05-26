@@ -1,6 +1,7 @@
-import { MenuItemData } from '../header/menu-data'
 import { WithClassName } from '@/types/types'
 import Link from 'next/link'
+
+import { MenuItemData } from '../header/menu-data'
 
 function SocialIconLinks({
   data,

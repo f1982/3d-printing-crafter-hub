@@ -1,6 +1,8 @@
-import { getCategories } from '../post-data'
-import { Button } from '@/components/ui/button'
 import Link from 'next/link'
+
+import { Button } from '@/components/ui/button'
+
+import { getCategories } from '../post-data'
 
 export default function CategoryListView({
   data,
@@ -14,7 +16,7 @@ export default function CategoryListView({
           return (
             <div key={c.name}>
               <Link href={c.url}>
-                <Button variant="default" className="p-3 rounded-none">
+                <Button variant="default" className="rounded-none p-3">
                   {c.name.toUpperCase()}
                 </Button>
               </Link>

@@ -1,9 +1,10 @@
 'use client'
 
+import { PropsWithChildren } from 'react'
+
 import { WithClassName } from '@/types/types'
 import clsx from 'clsx'
 import Link, { LinkProps } from 'next/link'
-import { PropsWithChildren } from 'react'
 
 export default function StyledLink(
   props: LinkProps & PropsWithChildren & WithClassName,

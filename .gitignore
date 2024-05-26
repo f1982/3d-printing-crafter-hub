@@ -31,3 +31,5 @@ public/sitemap-0.xml
 #pwa
 **/public/sw**
 **/public/swe**
+
+.cache/

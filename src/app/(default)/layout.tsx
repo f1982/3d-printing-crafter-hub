@@ -1,10 +1,14 @@
-import { ReactNode } from 'react'
+import { ReactNode, Suspense } from 'react'
 
 import '@/globals.css'
 import Link from 'next/link'
 
 import SiteFooter from '@/lib/site-footer'
 import SiteHeader from '@/lib/site-header'
+
+import Spiner from '@/components/atoms/spinner'
+
+import GroupsView from '@/features/post/components/groups-view'
 
 import { siteSettings, siteViewport } from '@/config/setting'
 
@@ -23,9 +27,9 @@ export default function Layout({
         <div className="hidden max-w-[18rem] flex-col gap-12 py-12 lg:flex">
           <Link href={'/'}>{siteSettings.logo}</Link>
           <div className="sticky top-9">
-            {/* <Suspense fallback={<Spiner />}>
+            <Suspense fallback={<Spiner />}>
               <GroupsView />
-            </Suspense> */}
+            </Suspense>
           </div>
         </div>
         <div className="flex flex-1 flex-col gap-12 py-12">

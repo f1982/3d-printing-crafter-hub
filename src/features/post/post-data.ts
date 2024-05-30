@@ -17,7 +17,6 @@ export async function getPosts() {
       thumbnail: true,
       tags: true,
       url: true,
-      category: true,
       updatedAt: true,
     },
     orderBy: {
@@ -42,7 +41,6 @@ export async function getPostsBy(category?: string, tag?: string) {
       thumbnail: true,
       tags: true,
       url: true,
-      category: true,
       updatedAt: true,
     },
     where: {
@@ -85,7 +83,7 @@ export async function getProcessedPosts(category?: string, tag?: string) {
     thumbnail: p.thumbnail?.startsWith('https://')
       ? p.thumbnail
       : '/images/' + p.thumbnail,
-    tags: p.tags?.map((t: any) => t.name),
+    tags: p.tags?.map((t: any) => t.title),
   }))
 }
 
@@ -141,7 +139,7 @@ export async function getCategories() {
       id: true,
       slug: true,
       description: true,
-      name: true,
+      title: true,
     },
   })
 
@@ -180,7 +178,7 @@ export async function getTag(slug: string) {
     where: { slug },
     select: {
       id: true,
-      name: true,
+      title: true,
       slug: true,
       posts: true,
     },

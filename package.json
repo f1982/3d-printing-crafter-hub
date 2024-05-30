@@ -17,6 +17,9 @@
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "dependencies": {
+    "@libsql/client": "^0.6.0",
+    "@prisma/adapter-libsql": "^5.14.0",
+    "@prisma/client": "^5.10.2",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-icons": "^1.3.0",
@@ -67,7 +70,6 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^8.4.1",
-    "@prisma/client": "^5.10.2",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/lodash": "4.14.198",
     "@types/md5": "^2.3.5",

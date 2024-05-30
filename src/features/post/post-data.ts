@@ -7,6 +7,7 @@ import { delay } from '@/utils/utils'
 import { debuggingMode } from '@/config/setting'
 
 export async function getPosts() {
+  console.log('prisma.post', prisma.post)
   const data = await prisma.post.findMany({
     select: {
       id: true,
@@ -112,17 +113,24 @@ export async function getTagsByCategorySlug(categorySlug: string) {
 }
 
 export async function getGroups() {
-  const data = await prisma.group.findMany({
+  const data = await prisma.categoryGroup.findMany({
     select: {
       id: true,
-      name: true,
-      categories: true,
+      title: true,
+      categories: {
+        select: {
+          id: true,
+          title: true,
+          slug: true,
+          description: true,
+        },
+      },
     },
   })
 
-  if (debuggingMode) {
-    await delay(1500)
-  }
+  // if (debuggingMode) {
+  //   await delay(1500)
+  // }
 
   return data
 }
@@ -132,6 +140,7 @@ export async function getCategories() {
     select: {
       id: true,
       slug: true,
+      description: true,
       name: true,
     },
   })

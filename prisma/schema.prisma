@@ -1,5 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
 }
 
 datasource db {
@@ -20,7 +21,6 @@ datasource db {
 
 model Category {
   id          Int     @id @default(autoincrement())
-  name        String
   slug        String  @unique
   title       String
   description String?
@@ -32,20 +32,20 @@ model Category {
   updatedAt DateTime @default(now()) @updatedAt
 
   groupId Int?
-  Group   Group? @relation(fields: [groupId], references: [id])
+  Group   CategoryGroup? @relation(fields: [groupId], references: [id])
 }
 
-model Group {
-  id   Int    @id @default(autoincrement())
-  name String
+model CategoryGroup {
+  id          Int     @id @default(autoincrement())
+  title       String
+  description String?
 
   categories Category[]
 }
 
 model Post {
-  id       Int    @id @default(autoincrement())
-  category String
-  slug     String @unique
+  id   Int    @id @default(autoincrement())
+  slug String @unique
 
   title       String
   description String?
@@ -65,9 +65,9 @@ model Post {
 }
 
 model Tag {
-  id   Int    @id @default(autoincrement())
-  slug String @unique
-  name String
+  id    Int    @id @default(autoincrement())
+  slug  String @unique
+  title String
 
   posts Post[]
 

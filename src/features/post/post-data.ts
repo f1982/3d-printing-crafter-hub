@@ -1,7 +1,8 @@
 import { remark } from 'remark'
 import html from 'remark-html'
 
-import prisma from '@/utils/db/prisma'
+import prisma from '@/lib/prisma-client'
+
 import { delay } from '@/utils/utils'
 
 import { debuggingMode } from '@/config/setting'

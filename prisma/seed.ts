@@ -2,7 +2,7 @@ import { faker } from '@faker-js/faker'
 
 // import { PrismaClient } from '@prisma/client'
 // const prisma = new PrismaClient()
-import prisma from '../src/utils/db/prisma'
+import prisma from '../src/lib/prisma-client'
 
 async function cleanupData() {
   try {

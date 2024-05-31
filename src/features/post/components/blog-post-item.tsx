@@ -32,11 +32,8 @@ const PostItemView: React.FC<BlogPostItemProps> = ({
 
         <h1
           className={clsx(
-            'pointer-events-none absolute left-0 top-0 p-5 text-lg font-bold leading-5 text-white',
-          )}
-          style={{
-            textShadow: '0px 1px 0px rgba(0, 0, 0, 0.6)',
-          }}>
+            'pointer-events-none absolute left-0 top-0 z-10 p-5 text-lg font-bold leading-5 text-white',
+          )}>
           {title}
         </h1>
         {/* If content is a url, show a link icon */}

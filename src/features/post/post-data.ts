@@ -7,7 +7,6 @@ import { delay } from '@/utils/utils'
 import { debuggingMode } from '@/config/setting'
 
 export async function getPosts() {
-  console.log('prisma.post', prisma.post)
   const data = await prisma.post.findMany({
     select: {
       id: true,
@@ -88,7 +87,6 @@ export async function getProcessedPosts(category?: string, tag?: string) {
 }
 
 export async function getTagsByCategorySlug(categorySlug: string) {
-  console.log('getTagsByCategorySlug')
   try {
     const category = await prisma.category.findUnique({
       where: {

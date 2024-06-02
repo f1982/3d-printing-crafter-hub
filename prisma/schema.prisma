@@ -62,6 +62,7 @@ model Post {
   categoryId Int?
 
   tags Tag[]
+  Vote Vote[]
 }
 
 model Tag {
@@ -73,4 +74,15 @@ model Tag {
 
   Category   Category? @relation(fields: [categoryId], references: [id])
   categoryId Int?
+}
+
+model Vote {
+  id        Int      @id @default(autoincrement())
+  value     Int // 1 for upvote, -1 for downvote
+  post      Post     @relation(fields: [postId], references: [id])
+  postId    Int
+  clientId  String? // Unique identifier for anonymous users
+  createdAt DateTime @default(now())
+
+  @@unique([clientId, postId]) // Ensure an anonymous user can only vote once per post
 }

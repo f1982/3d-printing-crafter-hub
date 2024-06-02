@@ -12,7 +12,6 @@ export function getClientId() {
 }
 
 export async function getVote(postId: number) {
-  console.log('getVote')
   const data = await prisma.vote.findMany({
     where: {
       postId: postId,
@@ -21,7 +20,6 @@ export async function getVote(postId: number) {
       value: true,
     },
   })
-  console.log('data', data)
   return data.reduce((accumulator, v) => accumulator + v.value, 0)
 }
 
@@ -37,12 +35,10 @@ export async function updateVote(
         postId: postId,
       },
     })
-    console.log('existingVote', existingVote)
 
     if (existingVote) {
-      console.log('new number:', value + existingVote.value)
       const voteValue = value + existingVote.value
-      await prisma.vote.update({
+      return await prisma.vote.update({
         where: {
           id: existingVote.id,
         },
@@ -50,7 +46,6 @@ export async function updateVote(
           value: voteValue,
         },
       })
-      return null
     }
 
     const vote = await prisma.vote.create({

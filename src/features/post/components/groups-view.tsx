@@ -14,7 +14,7 @@ export default async function GroupsView() {
           return (
             <div key={g.title} className="flex flex-col gap-3">
               <div>
-                <span className="bg-secondary text-xl font-bold text-secondary-foreground">
+                <span className="bg-primary text-xl font-bold text-primary-foreground">
                   {g.title}
                 </span>
               </div>

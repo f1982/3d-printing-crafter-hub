@@ -13,7 +13,6 @@ async function PageContent({
 
   posts = await getProcessedPosts(category, tag)
 
-  // let tags: { name: string; url: string }[] | undefined = undefined
   let tags: any[] = []
   if (category) {
     const ot = await getTagsByCategorySlug(category)

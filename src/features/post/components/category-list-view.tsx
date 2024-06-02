@@ -11,7 +11,7 @@ export default function CategoryListView({
 }) {
   return (
     <>
-      <div className="flex flex-wrap gap-3 ">
+      <div className="flex flex-wrap gap-3">
         {data.map((c) => {
           return (
             <div key={c.name}>
@@ -30,7 +30,7 @@ export default function CategoryListView({
 
 export async function CategoryList() {
   let categories = (await getCategories()).map((c) => ({
-    name: c.name,
+    name: c.title,
     url: `/c/${c.slug}`,
   }))
 

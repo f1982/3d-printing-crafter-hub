@@ -1,4 +1,5 @@
-import { getProcessedPosts, getTagsByCategorySlug } from '../post-data'
+import { getProcessedPosts } from '../post-actions'
+import { getTagsByCategory } from '../tag-actions'
 import PostCardListView from './post-card-list-view'
 import Tags from './post-tags'
 
@@ -15,10 +16,8 @@ async function PageContent({
 
   let tags: any[] = []
   if (category) {
-    const ot = await getTagsByCategorySlug(category)
-    console.log('ot', ot)
+    const ot = await getTagsByCategory(category)
     tags = ot.map((t) => ({ title: t.title, url: '' }))
-    console.log('tags', tags)
   }
 
   if (!posts) {

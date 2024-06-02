@@ -5,8 +5,8 @@ import { Metadata } from 'next/types'
 
 import Spiner from '@/components/atoms/spinner'
 
+import { getCategories, getCategory } from '@/features/group/group-actions'
 import PageContent from '@/features/post/components/page-content'
-import { getCategories, getCategory } from '@/features/post/post-data'
 
 export async function generateStaticParams(): Promise<any> {
   const data = await getCategories()

@@ -1,6 +1,6 @@
 import CardGrid from '@/components/atoms/card-grid'
 
-import PostItemView from './blog-post-item'
+import PostItemView from './post-card-view'
 
 export default function PostCardListView({ posts }: { posts: any[] }) {
   return (

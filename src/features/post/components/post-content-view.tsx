@@ -1,11 +1,9 @@
 import clsx from 'clsx'
 import Image from 'next/image'
-import Link from 'next/link'
 
 import { NextShare } from '@/lib/sns-share'
 
 import Prose from '@/components/atoms/prose'
-import { Button } from '@/components/ui/button'
 
 function PostHeader({
   title,
@@ -39,25 +37,30 @@ function PostHeader({
   )
 }
 
-export default function PostDetail({ post }: { post: any }) {
+interface PostContentProps {
+  title: string
+  thumbnail: string
+  content: string
+  sharableUrl?: string
+}
+export default function PostContentView({
+  title,
+  thumbnail,
+  content,
+  sharableUrl,
+}: PostContentProps) {
   return (
     <>
-      <PostHeader title={post.title} thumbnail={post.thumbnail} />
+      <PostHeader title={title} thumbnail={thumbnail} />
 
       <div className="mx-auto p-4 md:p-9">
         <Prose>
-          <div dangerouslySetInnerHTML={{ __html: post.content }} />
+          <div dangerouslySetInnerHTML={{ __html: content }} />
         </Prose>
-
-        {post.url && (
-          <Link href={post.url} passHref>
-            <Button variant={'outline'}>Website</Button>
-          </Link>
-        )}
 
         <div className="mt-36 flex flex-row items-center justify-center gap-6">
           <span>Share with your friend:</span>
-          <NextShare title={post.title} url=""></NextShare>
+          <NextShare title={title} url={sharableUrl}></NextShare>
         </div>
       </div>
     </>

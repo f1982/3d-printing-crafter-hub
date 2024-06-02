@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 import { Button } from '@/components/ui/button'
 
-import { getGroups } from '../post-data'
+import { getGroups } from '@/features/group/group-actions'
 
 export default async function GroupsView() {
   const groups = await getGroups()

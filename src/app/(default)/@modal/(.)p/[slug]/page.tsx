@@ -5,8 +5,8 @@ import { notFound } from 'next/navigation'
 import Modal from '@/components/atoms/page-modal'
 import Spiner from '@/components/atoms/spinner'
 
-import PostDetail from '@/features/post/components/post-detail'
-import { getProcessedPost } from '@/features/post/post-data'
+import PostContentView from '@/features/post/components/post-content-view'
+import { getProcessedPost } from '@/features/post/post-actions'
 
 interface PopProps {
   params: {
@@ -14,19 +14,26 @@ interface PopProps {
   }
 }
 
-async function PostDetailWrapper({ slug }: { slug: string }) {
+async function PostContentViewWrapper({ slug }: { slug: string }) {
   let post = await getProcessedPost(slug)
   if (!post) {
     notFound()
   }
-  return <PostDetail post={post} />
+  return (
+    <PostContentView
+      thumbnail={post.thumbnail || ''}
+      content={post.content || ''}
+      title={post.title}
+      sharableUrl=""
+    />
+  )
 }
 
 const PostModalPage = async ({ params }: PopProps) => {
   return (
     <Modal>
       <Suspense fallback={<Spiner />}>
-        <PostDetailWrapper slug={params.slug} />
+        <PostContentViewWrapper slug={params.slug} />
       </Suspense>
     </Modal>
   )

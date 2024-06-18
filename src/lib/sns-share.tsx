@@ -46,7 +46,7 @@ export function NextShare({
 
 export function SocialShareBar(props: ShareProps) {
   return (
-    <div className="flex flex-row gap-3 justify-center items-center">
+    <div className="flex flex-row items-center justify-center gap-3">
       <span className="flex-1">Share with your friend</span>
       <NextShare {...props} />
     </div>

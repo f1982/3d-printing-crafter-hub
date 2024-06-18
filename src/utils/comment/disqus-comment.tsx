@@ -1,7 +1,8 @@
 'use client'
 
-import { disqus } from '@/config/setting'
 import { DiscussionEmbed } from 'disqus-react'
+
+import { disqus } from '@/config/setting'
 
 export const DisqusComments = ({
   title,
@@ -19,7 +20,7 @@ export const DisqusComments = ({
     title, // Single post title
   }
   return (
-    <div className="mx-auto mb-6 max-w-3xl w-full">
+    <div className="mx-auto mb-6 w-full max-w-3xl">
       {/* @ts-ignore*/}
       <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
     </div>

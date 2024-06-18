@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 :root {
   --background: 287 14% 95%;
   --foreground: 287 5% 10%;
@@ -50,8 +48,6 @@
   --radius: 0.5rem;
 }
 
-
-
 @layer base {
   * {
     @apply border-border;
@@ -66,7 +62,7 @@
   .emoji-container {
     @apply relative flex aspect-square w-full;
     @apply items-center justify-center;
-    @apply rounded-xl ring-1 ring-border bg-card hover:bg-accent;
+    @apply rounded-xl bg-card ring-1 ring-border hover:bg-accent;
   }
 
   .emoji-item-button {

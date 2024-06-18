@@ -2,7 +2,7 @@ import { PropsWithChildren } from 'react'
 
 export default function Prose({ children }: PropsWithChildren) {
   return (
-    <article className="prose prose-md dark:prose-invert max-w-none mb-9">
+    <article className="prose-md prose mb-9 max-w-none dark:prose-invert">
       {children}
     </article>
   )

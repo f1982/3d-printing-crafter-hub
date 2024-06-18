@@ -1,9 +1,10 @@
-import { siteSettings } from './setting'
 import {
   getJsonLdArticle,
   getJsonLdPageBase,
   getJsonLdWebsite,
 } from '@/utils/schema-ld/schema-json-utils'
+
+import { siteSettings } from './setting'
 
 export const jsonLdWebsite = getJsonLdWebsite(siteSettings)
 

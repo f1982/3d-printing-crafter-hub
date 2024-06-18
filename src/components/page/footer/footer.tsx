@@ -1,5 +1,6 @@
-import { MenuItemData } from '../header/menu-data'
 import React from 'react'
+
+import { MenuItemData } from '../header/menu-data'
 
 type FooterProps = {
   logo?: React.ReactNode
@@ -17,8 +18,7 @@ export function Slogan({ text }: { text: string }) {
 export default function Footer(props: FooterProps) {
   return (
     <footer className="py-16 md:py-32">
-      <div className="container">
-        {/* <div className="flex flex-col justify-between gap-9 md:flex-row">
+      {/* <div className="flex flex-col justify-between gap-9 md:flex-row">
           <div className="flex flex-col items-center gap-6 md:items-start">
             {props.logo}
             <SocialIconLinks data={props.sns}></SocialIconLinks>
@@ -28,10 +28,9 @@ export default function Footer(props: FooterProps) {
             <ExtraLinks data={props.links} />
           </div>
         </div> */}
-        <div>
-          <div className="my-9 border-b border-solid border-b-border"></div>
-          <p className="text-xs text-muted-foreground">{props.copyright}</p>
-        </div>
+      <div>
+        <div className="my-9 border-b border-solid border-b-border"></div>
+        <p className="text-xs text-muted-foreground">{props.copyright}</p>
       </div>
     </footer>
   )

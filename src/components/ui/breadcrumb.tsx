@@ -1,6 +1,8 @@
-import { cn, getValidChildren } from './utils'
-import { ChevronRightIcon } from '@radix-ui/react-icons'
 import * as React from 'react'
+
+import { ChevronRightIcon } from '@radix-ui/react-icons'
+
+import { cn, getValidChildren } from './utils'
 
 export interface BreadcrumbProps extends React.ComponentPropsWithoutRef<'nav'> {
   /* The visual separator between each breadcrumb item */

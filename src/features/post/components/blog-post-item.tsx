@@ -1,44 +1,38 @@
-import { Badge } from '@/components/ui/badge'
+import React from 'react'
+
 import clsx from 'clsx'
 import { sampleSize } from 'lodash'
 import { Link2 } from 'lucide-react'
-import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
 
-const PostItemView: React.FC<{
+import HoverScaleImage from '@/components/atoms/hover-scale-image'
+import { Badge } from '@/components/ui/badge'
+
+interface BlogPostItemProps {
   title: string
   coverImage: string
   date: string
+  description: string
   url: string
   tags: string[]
-}> = ({ title, coverImage, date, url, tags }) => (
-  <div className="w-full flex flex-col gap-3">
-    <div className="cursor-pointer relative aspect-video w-full rounded-xl overflow-hidden">
-      <Link href={url} passHref>
-        <Image
-          className={clsx(
-            'w-full h-full object-cover',
-            'bg-primary',
-            'ring-1 ring-muted',
-            'scale-100 transition-all duration-300 ease-in-out hover:scale-110',
-          )}
-          src={coverImage}
-          width={600}
-          height={400}
-          alt={`${title} preview`}
-        />
+}
 
-        <div
-          className={clsx(
-            'mb-3 absolute top-0 left-0 w-full h-full ',
-            // 'transition-all duration-1200 ease-in',
-            'bg-primary/30',
-            'pointer-events-none',
-          )}></div>
+const PostItemView: React.FC<BlogPostItemProps> = ({
+  title,
+  coverImage,
+  description,
+  date,
+  url,
+  tags,
+}) => (
+  <div className="flex w-full flex-col gap-3">
+    <div className="relative aspect-video w-full cursor-pointer overflow-hidden rounded-xl">
+      <Link href={url} scroll={false}>
+        <HoverScaleImage src={coverImage} alt={title} />
+
         <h1
           className={clsx(
-            'text-lg absolute top-0 left-0 p-5 leading-5 font-bold text-white pointer-events-none',
+            'pointer-events-none absolute left-0 top-0 p-5 text-lg font-bold leading-5 text-white',
           )}
           style={{
             textShadow: '0px 1px 0px rgba(0, 0, 0, 0.6)',
@@ -47,25 +41,29 @@ const PostItemView: React.FC<{
         </h1>
         {/* If content is a url, show a link icon */}
         {url.startsWith('http') && (
-          <span className="absolute left-3 bottom-2 text-muted pointer-events-none">
-            <Link2 />
+          <span className="pointer-events-none absolute bottom-2 left-3 text-muted">
+            <Link2 className="text-primary-foreground" />
           </span>
         )}
-        <div className="absolute right-3 bottom-3 text-muted pointer-events-none">
-          {/* {<p>tags:{JSON.stringify(tags)}</p>} */}
+        {/* Tags */}
+        <div className="pointer-events-none absolute bottom-3 right-3 text-muted">
           {sampleSize(tags, 2)?.map((tag) => (
             <Badge
               key={tag}
-              className="mr-2 text-xs bg-accent text-muted-foreground rounded-xl">
+              className={clsx(
+                'mr-2 rounded-xl text-xs',
+                'bg-popover text-popover-foreground',
+              )}>
               {tag}
             </Badge>
           ))}
         </div>
       </Link>
     </div>
-    {/*  */}
+
     <div>
       <span className="text-xs text-muted-foreground">{date}</span>
+      <p>{description}</p>
     </div>
   </div>
 )

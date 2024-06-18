@@ -1,5 +1,6 @@
-import clsx from 'clsx'
 import { PropsWithChildren } from 'react'
+
+import clsx from 'clsx'
 
 interface TypoProps extends PropsWithChildren {
   className?: string

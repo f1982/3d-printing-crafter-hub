@@ -1,5 +1,6 @@
-import { PageSetting } from '@/types/page'
 import { Metadata } from 'next'
+
+import { PageSetting } from '@/types/page'
 import { Icons } from 'next/dist/lib/metadata/types/metadata-types'
 
 // Mix site settings and page sittings together for a page

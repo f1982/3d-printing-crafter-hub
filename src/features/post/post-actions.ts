@@ -1,10 +1,66 @@
+'use server'
+
+import { Post } from '@prisma/client'
+import { revalidatePath } from 'next/cache'
 import { remark } from 'remark'
 import html from 'remark-html'
 
-import prisma from '@/utils/db/prisma'
+import prisma from '@/lib/prisma-client'
+
 import { delay } from '@/utils/utils'
 
 import { debuggingMode } from '@/config/setting'
+
+export const createPost = async (data: Partial<Post>) => {
+  try {
+    return await prisma.post.create({
+      data: {
+        title: data.title!,
+        slug: data.slug!,
+        description: data.description,
+        keywords: data.keywords!,
+        content: data.content!,
+      },
+    })
+  } catch (e) {
+    return null
+  }
+}
+
+export const updatePost = async (data: Partial<Post>) => {
+  console.log('data', data)
+  try {
+    await prisma.post.update({
+      where: { id: data.id },
+      data: {
+        title: data.title,
+        description: data.description,
+        keywords: data.keywords,
+        content: data.content,
+        thumbnail: data.thumbnail,
+      },
+    })
+
+    revalidatePath('/')
+
+    return {}
+  } catch (e) {
+    console.log('e', e)
+    return null
+  }
+}
+
+export async function getPostById(id: number) {
+  const data = await prisma.post.findUnique({
+    where: { id },
+  })
+
+  if (debuggingMode) {
+    await delay(1500)
+  }
+
+  return data
+}
 
 export async function getPosts() {
   const data = await prisma.post.findMany({
@@ -16,7 +72,6 @@ export async function getPosts() {
       thumbnail: true,
       tags: true,
       url: true,
-      category: true,
       updatedAt: true,
     },
     orderBy: {
@@ -41,7 +96,6 @@ export async function getPostsBy(category?: string, tag?: string) {
       thumbnail: true,
       tags: true,
       url: true,
-      category: true,
       updatedAt: true,
     },
     where: {
@@ -84,104 +138,8 @@ export async function getProcessedPosts(category?: string, tag?: string) {
     thumbnail: p.thumbnail?.startsWith('https://')
       ? p.thumbnail
       : '/images/' + p.thumbnail,
-    tags: p.tags?.map((t: any) => t.name),
+    tags: p.tags?.map((t: any) => t.title),
   }))
-}
-
-export async function getTagsByCategorySlug(categorySlug: string) {
-  console.log('getTagsByCategorySlug')
-  try {
-    const category = await prisma.category.findUnique({
-      where: {
-        slug: categorySlug,
-      },
-      include: {
-        tags: true,
-      },
-    })
-
-    if (!category) {
-      throw new Error(`Category with slug "${categorySlug}" not found`)
-    }
-
-    return category.tags
-  } catch (error) {
-    console.error('Error fetching tags:', error)
-    throw error
-  }
-}
-
-export async function getGroups() {
-  const data = await prisma.group.findMany({
-    select: {
-      id: true,
-      name: true,
-      categories: true,
-    },
-  })
-
-  if (debuggingMode) {
-    await delay(1500)
-  }
-
-  return data
-}
-
-export async function getCategories() {
-  const data = await prisma.category.findMany({
-    select: {
-      id: true,
-      slug: true,
-      name: true,
-    },
-  })
-
-  return data
-}
-
-export async function getCategory(slug: string) {
-  const data = await prisma.category.findUnique({
-    where: { slug },
-    select: {
-      id: true,
-      title: true,
-      slug: true,
-      description: true,
-      posts: {
-        orderBy: {
-          createdAt: 'desc',
-        },
-        include: {
-          tags: true,
-        },
-      },
-      tags: true,
-    },
-  })
-
-  if (debuggingMode) {
-    await delay(1500)
-  }
-
-  return data
-}
-
-export async function getTag(slug: string) {
-  const data = await prisma.tag.findUnique({
-    where: { slug },
-    select: {
-      id: true,
-      name: true,
-      slug: true,
-      posts: true,
-    },
-  })
-
-  if (debuggingMode) {
-    await delay(1500)
-  }
-
-  return data
 }
 
 export async function getPost(slug: string) {

@@ -1,3 +1,5 @@
+import React from 'react'
+
 import { Icons } from 'next/dist/lib/metadata/types/metadata-types'
 
 export type SiteSetting = {

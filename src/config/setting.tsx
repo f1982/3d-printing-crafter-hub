@@ -19,16 +19,16 @@ export const disqus = {
 export const debuggingMode = false
 
 export const siteSettings: SiteSetting = {
-  name: 'Open AI Hub',
+  name: 'AI Hardware Hub',
   url: siteUrl,
-  title: 'Copy paste iphone emojis, Get Heart, Laughing, Skull, Nerd Emojis',
-  slogan: 'Copy paste iphone emojis with ease',
+  title: 'DIY AI Hardware Projects and Product Collection',
+  slogan: 'Build, Innovate, and Explore AI Hardware',
   description:
-    'Search for emojis with just one click! Explore a variety of emojis, including heart, laughing, skull, nerd, sad, iPhone, eyes, star, thumbs up, kiss, and heart hand emojis. Enhance your online communication and express yourself effortlessly.',
+    'Discover and explore a wide range of AI hardware projects and products. From DIY kits and tutorials to the latest innovations in AI technology, find everything you need to start building and experimenting with AI hardware. Learn, create, and share your AI hardware projects with a community of enthusiasts.',
   keywords:
-    'Emoji Copy Paste, Heart Emoji, Laughing Emoji, Skull Emoji, Nerd Emoji, Sad Emoji, Get Emojis in One Click, iPhone Emoji, Eyes Emoji, Star Emoji, Thumbs Up Emoji, Kiss Emoji, Heart Hand Emoji',
-  author: 'emoji you',
-  creator: '@emojiucc',
+    'AI Hardware, DIY AI Projects, AI Kits, AI Hardware Tutorials, Build AI Hardware, Innovate with AI, AI Technology, AI Product Collection, AI Hardware Community, Machine Learning Hardware, Robotics, AI Gadgets',
+  author: 'AI DIY Team',
+  creator: '@ai_diy_hub',
   logo: <SiteLogo />,
 }
 

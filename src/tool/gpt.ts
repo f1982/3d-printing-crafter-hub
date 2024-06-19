@@ -71,18 +71,14 @@ export async function getGptJson({
     throw new Error('reach the length token limitation')
   }
 
-  try {
-    if (jsonFormat) {
-      console.log(
-        'chatCompletion?.choices[0]?.message?',
-        chatCompletion?.choices[0]?.message,
-      )
-      return JSON.parse(chatCompletion?.choices[0]?.message?.content!)
-    } else {
-      return chatCompletion?.choices[0]?.message?.content!
-    }
-  } catch (parseError) {
-    throw parseError
+  if (jsonFormat) {
+    console.log(
+      'chatCompletion?.choices[0]?.message?',
+      chatCompletion?.choices[0]?.message,
+    )
+    return JSON.parse(chatCompletion?.choices[0]?.message?.content!)
+  } else {
+    return chatCompletion?.choices[0]?.message?.content!
   }
 }
 

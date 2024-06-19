@@ -1,7 +1,8 @@
 import { faker } from '@faker-js/faker'
-import { PrismaClient } from '@prisma/client'
 
-const prisma = new PrismaClient()
+// import { PrismaClient } from '@prisma/client'
+// const prisma = new PrismaClient()
+import prisma from '../src/lib/prisma-client'
 
 async function cleanupData() {
   try {
@@ -54,7 +55,7 @@ async function seedData() {
     await prisma.tag.create({
       data: {
         slug: tag,
-        name: tag.charAt(0).toUpperCase() + tag.slice(1),
+        title: tag.charAt(0).toUpperCase() + tag.slice(1),
       },
     })
   }
@@ -90,13 +91,42 @@ async function seedData() {
   for (const category of categories) {
     await prisma.category.create({
       data: {
-        name: category,
         slug: category,
         title: category.charAt(0).toUpperCase() + category.slice(1),
         tags: {
           connect: (await getRandomTags()).map((id) => ({ id })),
         },
         description: faker.lorem.sentence(),
+      },
+    })
+  }
+
+  const getRandomCategory = async () => {
+    const tagCount = Math.floor(Math.random() * 5) + 1
+    const cateIds: number[] = []
+
+    for (let j = 0; j < tagCount; j++) {
+      const cate = categories[Math.floor(Math.random() * categories.length)]
+      const cateData = await prisma.category.findUnique({
+        where: { slug: cate },
+      })
+      if (cateData) {
+        cateIds.push(cateData.id)
+      }
+    }
+    return cateIds
+  }
+
+  // Create category groups
+  const groups = ['group1', 'group2', 'group3', 'group4', 'group5']
+  for (const group of groups) {
+    await prisma.categoryGroup.create({
+      data: {
+        title: group,
+        description: faker.lorem.sentence(),
+        categories: {
+          connect: (await getRandomCategory()).map((id) => ({ id })),
+        },
       },
     })
   }
@@ -112,7 +142,6 @@ async function seedData() {
     await prisma.post.create({
       data: {
         title: mockTitle,
-        category: category,
         slug: faker.helpers.slugify(mockTitle.toLowerCase().replace('.', '')),
         keywords: faker.lorem.words(),
         description: faker.lorem.sentence(),

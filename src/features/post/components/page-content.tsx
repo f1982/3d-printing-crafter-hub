@@ -1,5 +1,7 @@
-import { getProcessedPosts, getTagsByCategorySlug } from '../post-data'
+import { getProcessedPosts } from '../post-actions'
+import { getTagsByCategory } from '../tag-actions'
 import PostCardListView from './post-card-list-view'
+import Tags from './post-tags'
 
 async function PageContent({
   category,
@@ -12,13 +14,10 @@ async function PageContent({
 
   posts = await getProcessedPosts(category, tag)
 
-  // let tags: { name: string; url: string }[] | undefined = undefined
-  let tags: string[] | undefined = undefined
+  let tags: any[] = []
   if (category) {
-    const ot = await getTagsByCategorySlug(category)
-    console.log('ot', ot)
-    let tags = ot.map((t) => t.name)
-    console.log('tags', tags)
+    const ot = await getTagsByCategory(category)
+    tags = ot.map((t) => ({ title: t.title, url: '' }))
   }
 
   if (!posts) {
@@ -30,7 +29,7 @@ async function PageContent({
       <div>
         <PostCardListView posts={posts} />
 
-        {tags && <Tags tags={tags} />}
+        {tags && <Tags data={tags} />}
       </div>
     </>
   )

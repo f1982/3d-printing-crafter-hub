@@ -5,12 +5,16 @@ import { Metadata } from 'next/types'
 import { BreadcrumbNav } from '@/components/atoms/breadcrumb-nav'
 import PageRows from '@/components/layout/page-rows'
 
-import PostDetail from '@/features/post/components/post-detail'
-import { getPost, getPosts, getProcessedPost } from '@/features/post/post-data'
+import PostContentView from '@/features/post/components/post-content-view'
+import {
+  getPost,
+  getPosts,
+  getProcessedPost,
+} from '@/features/post/post-actions'
 
 export async function generateStaticParams(): Promise<any> {
   const data = await getPosts()
-  return data.map((p) => ({
+  return data.map((p: any) => ({
     slug: p.slug,
   }))
 }
@@ -26,7 +30,7 @@ export async function generateMetadata({
   return {
     title: post?.title,
     description: post?.description,
-    keywords: post?.tags.map((tag) => tag.name).join(', '),
+    keywords: post?.tags.map((tag: any) => tag.title).join(', '),
   }
 }
 
@@ -58,7 +62,12 @@ export default async function Page({ params }: PageSlugProp) {
           ]}
         />
 
-        <PostDetail post={post} />
+        <PostContentView
+          thumbnail={post.thumbnail!}
+          content={post.content!}
+          title={post.title}
+          sharableUrl=""
+        />
       </PageRows>
     </>
   )

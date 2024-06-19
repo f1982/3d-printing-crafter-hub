@@ -42,4 +42,6 @@ async function main() {
 
 try {
   main()
-} catch (error) {}
+} catch (error) {
+  console.log('error', error)
+}

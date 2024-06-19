@@ -15,7 +15,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <div className="mx-6 mb-36 flex flex-col gap-9 md:flex-row">
-        <div className="hidden max-w-[10rem] flex-col gap-12 py-12 lg:flex ">
+        <div className="hidden w-40 flex-col gap-12 py-12 lg:flex">
           <SiteLogo />
           <div>
             <ul>

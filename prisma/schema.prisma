@@ -1,5 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
 }
 
 datasource db {
@@ -20,7 +21,6 @@ datasource db {
 
 model Category {
   id          Int     @id @default(autoincrement())
-  name        String
   slug        String  @unique
   title       String
   description String?
@@ -32,20 +32,20 @@ model Category {
   updatedAt DateTime @default(now()) @updatedAt
 
   groupId Int?
-  Group   Group? @relation(fields: [groupId], references: [id])
+  Group   CategoryGroup? @relation(fields: [groupId], references: [id])
 }
 
-model Group {
-  id   Int    @id @default(autoincrement())
-  name String
+model CategoryGroup {
+  id          Int     @id @default(autoincrement())
+  title       String
+  description String?
 
   categories Category[]
 }
 
 model Post {
-  id       Int    @id @default(autoincrement())
-  category String
-  slug     String @unique
+  id   Int    @id @default(autoincrement())
+  slug String @unique
 
   title       String
   description String?
@@ -62,15 +62,27 @@ model Post {
   categoryId Int?
 
   tags Tag[]
+  Vote Vote[]
 }
 
 model Tag {
-  id   Int    @id @default(autoincrement())
-  slug String @unique
-  name String
+  id    Int    @id @default(autoincrement())
+  slug  String @unique
+  title String
 
   posts Post[]
 
   Category   Category? @relation(fields: [categoryId], references: [id])
   categoryId Int?
+}
+
+model Vote {
+  id        Int      @id @default(autoincrement())
+  value     Int // 1 for upvote, -1 for downvote
+  post      Post     @relation(fields: [postId], references: [id])
+  postId    Int
+  clientId  String? // Unique identifier for anonymous users
+  createdAt DateTime @default(now())
+
+  @@unique([clientId, postId]) // Ensure an anonymous user can only vote once per post
 }

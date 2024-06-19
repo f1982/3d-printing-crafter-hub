@@ -12,6 +12,8 @@ import GroupsView from '@/features/post/components/groups-view'
 
 import { siteSettings, siteViewport } from '@/config/setting'
 
+export const revalidate = 2 // revalidate the data at most every hour
+
 export const viewport = { ...siteViewport }
 
 export default function Layout({

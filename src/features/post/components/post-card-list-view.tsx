@@ -1,6 +1,6 @@
 import CardGrid from '@/components/atoms/card-grid'
 
-import PostItemView from './blog-post-item'
+import PostCardView from './post-card-view'
 
 export default function PostCardListView({ posts }: { posts: any[] }) {
   return (
@@ -8,7 +8,7 @@ export default function PostCardListView({ posts }: { posts: any[] }) {
       {posts.map((p) => {
         return (
           <div key={p.title}>
-            <PostItemView
+            <PostCardView
               title={p.title}
               coverImage={p.thumbnail!}
               date={p.updatedAt.toUTCString()}

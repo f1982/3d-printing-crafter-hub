@@ -5,7 +5,7 @@ import React from 'react'
 import { WithClassName } from '@/types/types'
 import clsx from 'clsx'
 
-import { copyToClipboard } from '../../utils/utils'
+import { copyToClipboard } from '@/utils/universal-copy'
 
 interface CopyButtonProps extends WithClassName {
   content: string

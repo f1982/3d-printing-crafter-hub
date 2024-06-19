@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { copyToClipboard } from '@/utils/utils'
+import { copyToClipboard } from '@/utils/universal-copy'
 
 import { Button, ButtonProps } from '../ui/button'
 

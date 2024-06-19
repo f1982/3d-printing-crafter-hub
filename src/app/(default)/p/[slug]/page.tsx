@@ -14,7 +14,7 @@ import {
 
 export async function generateStaticParams(): Promise<any> {
   const data = await getPosts()
-  return data.map((p) => ({
+  return data.map((p: any) => ({
     slug: p.slug,
   }))
 }
@@ -30,7 +30,7 @@ export async function generateMetadata({
   return {
     title: post?.title,
     description: post?.description,
-    keywords: post?.tags.map((tag) => tag.title).join(', '),
+    keywords: post?.tags.map((tag: any) => tag.title).join(', '),
   }
 }
 

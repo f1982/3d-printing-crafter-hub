@@ -26,6 +26,21 @@ export async function getTagsByCategory(categorySlug: string) {
   }
 }
 
+export async function getTags() {
+  try {
+    const tags = await prisma.tag.findMany()
+
+    if (!tags) {
+      throw new Error(`Tags not found`)
+    }
+
+    return tags
+  } catch (error) {
+    console.error('Error fetching tags:', error)
+    throw error
+  }
+}
+
 export async function getTag(slug: string) {
   const data = await prisma.tag.findUnique({
     where: { slug },

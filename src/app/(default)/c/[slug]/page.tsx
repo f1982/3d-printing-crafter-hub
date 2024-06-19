@@ -10,7 +10,7 @@ import PageContent from '@/features/post/components/page-content'
 
 export async function generateStaticParams(): Promise<any> {
   const data = await getCategories()
-  return data.map((c) => ({
+  return data.map((c: any) => ({
     slug: c.slug,
   }))
 }

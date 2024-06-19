@@ -6,6 +6,8 @@ declare global {
   var prisma: PrismaClient
 }
 
+export const DEBUG = 'prisma*'
+
 const prismaClientSingleton = () => {
   const url =
     process.env.TURSO_DATABASE_URL ||
@@ -18,7 +20,6 @@ const prismaClientSingleton = () => {
     authToken,
   })
   const adapter = new PrismaLibSQL(libsql)
-
   return new PrismaClient({ adapter })
 }
 

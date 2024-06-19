@@ -53,7 +53,7 @@ export default function PostContentView({
     <>
       <PostHeader title={title} thumbnail={thumbnail} />
 
-      <div className="mx-auto p-4 md:p-9">
+      <div className="mx-auto px-4 py-4 md:px-20 md:py-9">
         <Prose>
           <div dangerouslySetInnerHTML={{ __html: content }} />
         </Prose>

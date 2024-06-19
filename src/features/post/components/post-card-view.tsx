@@ -1,6 +1,7 @@
 import React from 'react'
 
 import clsx from 'clsx'
+import { format } from 'date-fns'
 import { sampleSize } from 'lodash'
 import { Link2 } from 'lucide-react'
 import Link from 'next/link'
@@ -17,7 +18,7 @@ interface BlogPostItemProps {
   tags: string[]
 }
 
-const PostItemView: React.FC<BlogPostItemProps> = ({
+const PostCardView: React.FC<BlogPostItemProps> = ({
   title,
   coverImage,
   description,
@@ -58,11 +59,14 @@ const PostItemView: React.FC<BlogPostItemProps> = ({
       </Link>
     </div>
 
-    <div>
-      <span className="text-xs text-muted-foreground">{date}</span>
-      <p>{description}</p>
+    <div className="text-right">
+      <span className="text-xs text-muted-foreground">Added: </span>
+      <span className="text-xs text-muted-foreground">
+        {format(date, 'LLLL d, yyyy')}
+      </span>
+      {/* <p>{description}</p> */}
     </div>
   </div>
 )
 
-export default PostItemView
+export default PostCardView

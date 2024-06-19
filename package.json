@@ -18,6 +18,7 @@
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.4.2",
     "@libsql/client": "^0.6.0",
     "@prisma/adapter-libsql": "^5.14.0",
     "@prisma/client": "^5.10.2",
@@ -49,6 +50,7 @@
     "next-share": "^0.27.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.51.5",
     "react-scroll-to-top": "3.0.0",
     "react-share": "4.4.1",
     "react-youtube": "10.1.0",
@@ -63,7 +65,8 @@
     "tailwindcss": "3.3.2",
     "tailwindcss-animate": "1.0.7",
     "usehooks-ts": "2.9.1",
-    "uui": "^1.0.7"
+    "uui": "^1.0.7",
+    "zod": "^3.23.8"
   },
   "overrides": {
     "next-contentlayer": {

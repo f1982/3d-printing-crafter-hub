@@ -1,3 +1,7 @@
+'use server'
+
+import { Post } from '@prisma/client'
+import { revalidatePath } from 'next/cache'
 import { remark } from 'remark'
 import html from 'remark-html'
 
@@ -6,6 +10,57 @@ import prisma from '@/lib/prisma-client'
 import { delay } from '@/utils/utils'
 
 import { debuggingMode } from '@/config/setting'
+
+export const createPost = async (data: Partial<Post>) => {
+  try {
+    return await prisma.post.create({
+      data: {
+        title: data.title!,
+        slug: data.slug!,
+        description: data.description,
+        keywords: data.keywords!,
+        content: data.content!,
+      },
+    })
+  } catch (e) {
+    return null
+  }
+}
+
+export const updatePost = async (data: Partial<Post>) => {
+  console.log('data', data)
+  try {
+    await prisma.post.update({
+      where: { id: data.id },
+      data: {
+        title: data.title,
+        description: data.description,
+        keywords: data.keywords,
+        content: data.content,
+        thumbnail: data.thumbnail,
+      },
+    })
+
+    revalidatePath('/')
+
+    return {}
+  } catch (e) {
+    console.log('e', e)
+    return null
+  }
+}
+
+export async function getPostById(id: number) {
+  const data = await prisma.post.findUnique({
+    where: { id },
+  })
+
+  if (debuggingMode) {
+    await delay(1500)
+  }
+
+  return data
+}
 
 export async function getPosts() {
   const data = await prisma.post.findMany({
